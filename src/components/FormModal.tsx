@@ -48,11 +48,12 @@ const FormModal = ({ isOpen, onClose }: FormModalProps) => {
             onClick={onClose}
           />
           <motion.div
-            className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-[0_30px_90px_-15px_rgba(0,0,0,0.6)] relative z-10 border-4 border-white/20"
+            className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] shadow-[0_30px_90px_-15px_rgba(0,0,0,0.6)] relative z-10 border-4 border-white/20 overflow-hidden"
             initial={{ scale: 0.85, opacity: 0, y: 40 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.85, opacity: 0, y: 40 }}
             transition={{ type: 'spring', damping: 20, stiffness: 250 }}
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             <div className="sticky top-0 bg-gradient-to-r from-[#6c256f] via-[#8c4091] to-[#009bac] px-10 py-8 flex items-center justify-between rounded-t-3xl shadow-xl z-20">
               <motion.h3
@@ -74,6 +75,12 @@ const FormModal = ({ isOpen, onClose }: FormModalProps) => {
               </motion.button>
             </div>
 
+            <div className="max-h-[calc(90vh-100px)] overflow-y-auto" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+              <style>{`
+                .max-h-\\[calc\\(90vh-100px\\)\\]::-webkit-scrollbar {
+                  display: none;
+                }
+              `}</style>
             <form onSubmit={handleSubmit} className="p-10 md:p-12">
               <motion.p
                 className="text-gray-700 mb-10 text-center text-lg font-medium"
@@ -161,6 +168,7 @@ const FormModal = ({ isOpen, onClose }: FormModalProps) => {
                 </motion.button>
               </div>
             </form>
+            </div>
           </motion.div>
         </motion.div>
       )}
