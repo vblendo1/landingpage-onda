@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import HeroImageMobile from './components/HeroImageMobile';
 import { Logos3 } from './components/ui/logos3';
 import Differentials from './components/Differentials';
 import ProductCatalog from './components/ProductCatalog';
@@ -21,6 +22,7 @@ function App() {
       <ScrollProgress />
       <Navbar />
       <Hero onCTAClick={() => setIsModalOpen(true)} />
+      <HeroImageMobile />
       <Logos3 />
       <div id="diferenciais">
         <Differentials onCTAClick={() => setIsModalOpen(true)} />
