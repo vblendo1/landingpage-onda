@@ -50,6 +50,17 @@
     box-shadow: 0 20px 60px -15px rgba(0, 0, 0, 0.3),
                 0 10px 30px -10px rgba(108, 37, 111, 0.2);
   }
+
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .no-tilt-mobile {
+    @media (max-width: 768px) {
+      transform: none !important;
+    }
+  }
 }
 
 @keyframes fadeIn {
@@ -166,6 +177,21 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

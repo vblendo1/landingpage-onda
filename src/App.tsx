@@ -32,7 +32,7 @@ function App() {
         <Testimonials onCTAClick={() => setIsModalOpen(true)} />
       </div>
       <div id="blog">
-        <Blog />
+        <Blog onCTAClick={() => setIsModalOpen(true)} />
       </div>
       <div id="contato">
         <ContactForm />

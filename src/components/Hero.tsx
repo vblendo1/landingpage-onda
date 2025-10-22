@@ -34,7 +34,7 @@ const Hero = ({ onCTAClick }: HeroProps) => {
       />
       <FloatingParticles />
       <section id="hero" className="relative max-w-full mx-auto z-1">
-        <div className="max-w-screen-xl z-10 mx-auto px-6 pt-32 pb-24 gap-12 md:px-8 md:pt-40 md:pb-32">
+        <div className="max-w-screen-xl z-10 mx-auto px-4 md:px-6 lg:px-8 pt-24 pb-16 md:pt-32 md:pb-24 lg:pt-40 lg:pb-32">
           <motion.div
             className="space-y-5 max-w-3xl leading-0 lg:leading-5 mx-auto text-center"
             initial={{ opacity: 0, y: 20 }}
@@ -66,7 +66,7 @@ const Hero = ({ onCTAClick }: HeroProps) => {
               <ChevronRight className="w-4 h-4 text-[#6c256f]" />
             </motion.div>
 
-            <h2 className="text-4xl tracking-tight font-extrabold mx-auto leading-tight md:text-6xl md:leading-tight lg:text-7xl">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl tracking-tight font-extrabold mx-auto leading-tight">
               <motion.span
                 className="block bg-clip-text text-transparent bg-gradient-to-b from-gray-900 to-gray-700"
                 initial={{ opacity: 0, y: 20 }}
@@ -89,7 +89,7 @@ const Hero = ({ onCTAClick }: HeroProps) => {
             </h2>
 
             <motion.p
-              className="max-w-2xl mx-auto text-lg md:text-xl text-gray-700 leading-relaxed font-medium"
+              className="max-w-2xl mx-auto text-base md:text-lg lg:text-xl text-gray-700 leading-relaxed font-medium px-4"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.5 }}
@@ -105,14 +105,14 @@ const Hero = ({ onCTAClick }: HeroProps) => {
             >
               <motion.button
                 onClick={onCTAClick}
-                className="group relative inline-flex h-16 px-12 items-center justify-center rounded-full cursor-pointer overflow-hidden bg-gradient-to-r from-[#6c256f] via-[#8c4091] to-[#009bac] shadow-2xl shadow-[#6c256f]/50"
+                className="group relative inline-flex h-14 md:h-16 px-8 md:px-12 items-center justify-center rounded-full cursor-pointer overflow-hidden bg-gradient-to-r from-[#6c256f] via-[#8c4091] to-[#009bac] shadow-2xl shadow-[#6c256f]/50 touch-target"
                 whileHover={{ scale: 1.05, boxShadow: '0 30px 60px -15px rgba(108, 37, 111, 0.6)' }}
                 whileTap={{ scale: 0.98 }}
               >
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-r from-[#009bac] via-[#8c4091] to-[#6c256f] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 />
-                <span className="relative z-10 text-lg font-bold text-white flex items-center gap-3">
+                <span className="relative z-10 text-base md:text-lg font-bold text-white flex items-center gap-2 md:gap-3">
                   {ctaText}
                   <motion.span
                     animate={{ x: [0, 5, 0] }}

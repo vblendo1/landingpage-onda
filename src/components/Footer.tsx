@@ -132,28 +132,38 @@ const Footer = () => {
             <p className="text-white/90 text-base font-medium">
               2025 © Onda Pro. Todos os direitos reservados.
             </p>
-            <div className="flex flex-wrap justify-center gap-8 text-base">
-              <motion.a
-                href="/privacidade"
-                className="text-white/90 hover:text-white transition-colors duration-300 font-medium"
+            <div className="flex flex-wrap justify-center gap-6 md:gap-8 text-sm md:text-base">
+              <motion.button
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="text-white/90 hover:text-white transition-colors duration-300 font-medium touch-target"
                 whileHover={{ y: -2 }}
               >
                 Política de Privacidade
-              </motion.a>
-              <motion.a
-                href="/termos"
-                className="text-white/90 hover:text-white transition-colors duration-300 font-medium"
+              </motion.button>
+              <motion.button
+                onClick={() => {
+                  const element = document.getElementById('contato');
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                className="text-white/90 hover:text-white transition-colors duration-300 font-medium touch-target"
                 whileHover={{ y: -2 }}
               >
                 Termos Comerciais
-              </motion.a>
-              <motion.a
-                href="/blog"
-                className="text-white/90 hover:text-white transition-colors duration-300 font-medium"
+              </motion.button>
+              <motion.button
+                onClick={() => {
+                  const element = document.getElementById('blog');
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                className="text-white/90 hover:text-white transition-colors duration-300 font-medium touch-target"
                 whileHover={{ y: -2 }}
               >
                 Blog
-              </motion.a>
+              </motion.button>
             </div>
           </div>
         </div>
