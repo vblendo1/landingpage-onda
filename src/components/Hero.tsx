@@ -7,10 +7,9 @@ interface HeroProps {
 
 const Hero = ({ onCTAClick }: HeroProps) => {
   const title = {
-    regular: "Venda hoje. Pague depois. ",
+    regular: "Venda hoje. Pague depois.",
     gradient: "Até 60 dias pra lucrar antes de investir",
   }
-  const description = "Produtos com até 200% de margem, frete grátis para todo Brasil e atendimento exclusivo. Transforme seu estoque em lucro com condições que cabem no seu bolso."
   const ctaText = "Quero meu Catálogo Exclusivo"
 
   return (
@@ -41,31 +40,7 @@ const Hero = ({ onCTAClick }: HeroProps) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
           >
-            <motion.div
-              className="inline-flex items-center gap-2 text-sm font-semibold mx-auto px-6 py-3 bg-gradient-to-r from-[#6c256f]/10 via-[#009bac]/10 to-[#6c256f]/10 backdrop-blur-sm border border-[#6c256f]/20 rounded-full w-fit shadow-lg"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.1, duration: 0.3 }}
-              whileHover={{ scale: 1.05 }}
-            >
-              <motion.span
-                className="w-2 h-2 bg-gradient-to-r from-[#6c256f] to-[#009bac] rounded-full"
-                animate={{
-                  scale: [1, 1.3, 1],
-                  opacity: [1, 0.7, 1]
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-              <span className="bg-gradient-to-r from-[#6c256f] via-[#8c4091] to-[#009bac] bg-clip-text text-transparent">
-                Importadora B2B
-              </span>
-            </motion.div>
-
-            <h2 className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl tracking-tight font-extrabold mx-auto leading-tight">
+            <h2 className="text-3xl md:text-4xl tracking-tight font-extrabold mx-auto leading-tight">
               <motion.span
                 className="block bg-clip-text text-transparent bg-gradient-to-b from-gray-900 to-gray-700"
                 initial={{ opacity: 0, y: 20 }}
@@ -86,15 +61,6 @@ const Hero = ({ onCTAClick }: HeroProps) => {
                 {title.gradient}
               </motion.span>
             </h2>
-
-            <motion.p
-              className="max-w-2xl mx-auto text-base md:text-lg lg:text-xl text-gray-700 leading-relaxed font-medium px-4"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6, duration: 0.5 }}
-            >
-              {description}
-            </motion.p>
 
             <motion.div
               className="flex items-center justify-center gap-x-4 pt-10"
@@ -139,30 +105,6 @@ const Hero = ({ onCTAClick }: HeroProps) => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
             >
-              <motion.div
-                className="inline-flex items-center gap-2 text-sm font-semibold px-6 py-3 bg-gradient-to-r from-[#6c256f]/10 via-[#009bac]/10 to-[#6c256f]/10 backdrop-blur-sm border border-[#6c256f]/20 rounded-full w-fit shadow-lg"
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.1, duration: 0.3 }}
-                whileHover={{ scale: 1.05 }}
-              >
-                <motion.span
-                  className="w-2 h-2 bg-gradient-to-r from-[#6c256f] to-[#009bac] rounded-full"
-                  animate={{
-                    scale: [1, 1.3, 1],
-                    opacity: [1, 0.7, 1]
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                />
-                <span className="bg-gradient-to-r from-[#6c256f] via-[#8c4091] to-[#009bac] bg-clip-text text-transparent">
-                  Importadora B2B
-                </span>
-              </motion.div>
-
               <h2 className="text-3xl xl:text-5xl 2xl:text-6xl tracking-tight font-extrabold leading-tight">
                 <motion.span
                   className="block bg-clip-text text-transparent bg-gradient-to-b from-gray-900 to-gray-700"
@@ -184,15 +126,6 @@ const Hero = ({ onCTAClick }: HeroProps) => {
                   {title.gradient}
                 </motion.span>
               </h2>
-
-              <motion.p
-                className="text-base xl:text-lg text-gray-700 leading-relaxed font-medium"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.6, duration: 0.5 }}
-              >
-                {description}
-              </motion.p>
 
               <motion.div
                 className="pt-4 xl:pt-6"
