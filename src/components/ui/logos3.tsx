@@ -16,7 +16,7 @@ export const Logos3 = () => {
   const tripleLogos = [...logos, ...logos, ...logos];
 
   return (
-    <section className="py-12 bg-white border-y border-gray-200 overflow-hidden">
+    <section className="pt-8 pb-12 bg-white border-y border-gray-200 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <AnimatedSection>
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
