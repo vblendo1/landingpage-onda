@@ -2,12 +2,18 @@ import { ChevronRight } from "lucide-react"
 import { motion } from 'framer-motion'
 import FloatingParticles from './ui/FloatingParticles'
 
+interface HeroProps {
+  onCTAClick: () => void;
+}
+
+const Hero = ({ onCTAClick }: HeroProps) => {
   const title = {
     regular: "Venda hoje. Pague depois. ",
     gradient: "Até 60 dias pra lucrar antes de investir",
   }
-  const subtitle = "Produtos com até 200% de margem, frete grátis para todo Brasil e atendimento exclusivo. Transforme seu estoque em lucro com condições que cabem no seu bolso."
+  const description = "Produtos com até 200% de margem, frete grátis para todo Brasil e atendimento exclusivo. Transforme seu estoque em lucro com condições que cabem no seu bolso."
   const ctaText = "Quero meu Catálogo Exclusivo"
+
   return (
     <div className="relative overflow-hidden bg-gradient-to-br from-white via-[#f6f6f6] to-white">
       <motion.div
@@ -56,7 +62,7 @@ import FloatingParticles from './ui/FloatingParticles'
                 }}
               />
               <span className="bg-gradient-to-r from-[#6c256f] via-[#8c4091] to-[#009bac] bg-clip-text text-transparent">
-                {title}
+                Importadora B2B
               </span>
               <ChevronRight className="w-4 h-4 text-[#6c256f]" />
             </motion.div>
@@ -68,7 +74,7 @@ import FloatingParticles from './ui/FloatingParticles'
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.5 }}
               >
-                {subtitle.regular}
+                {title.regular}
               </motion.span>
               <motion.span
                 className="block text-transparent bg-clip-text bg-gradient-to-r from-[#6c256f] via-[#8c4091] to-[#009bac] relative"
@@ -79,7 +85,7 @@ import FloatingParticles from './ui/FloatingParticles'
                   textShadow: '0 0 80px rgba(108, 37, 111, 0.3)'
                 }}
               >
-                {subtitle.gradient}
+                {title.gradient}
               </motion.span>
             </h2>
 
@@ -155,7 +161,7 @@ import FloatingParticles from './ui/FloatingParticles'
                   }}
                 />
                 <span className="bg-gradient-to-r from-[#6c256f] via-[#8c4091] to-[#009bac] bg-clip-text text-transparent">
-                  {title}
+                  Importadora B2B
                 </span>
                 <ChevronRight className="w-4 h-4 text-[#6c256f]" />
               </motion.div>
@@ -167,7 +173,7 @@ import FloatingParticles from './ui/FloatingParticles'
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2, duration: 0.5 }}
                 >
-                  {subtitle.regular}
+                  {title.regular}
                 </motion.span>
                 <motion.span
                   className="block text-transparent bg-clip-text bg-gradient-to-r from-[#6c256f] via-[#8c4091] to-[#009bac] relative"
@@ -178,7 +184,7 @@ import FloatingParticles from './ui/FloatingParticles'
                     textShadow: '0 0 80px rgba(108, 37, 111, 0.3)'
                   }}
                 >
-                  {subtitle.gradient}
+                  {title.gradient}
                 </motion.span>
               </h2>
 
