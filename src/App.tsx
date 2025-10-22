@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import HeroImageMobile from './components/HeroImageMobile';
+import HeroBannerCarousel from './components/HeroBannerCarousel';
 import { Logos3 } from './components/ui/logos3';
 import Differentials from './components/Differentials';
 import ProductCatalog from './components/ProductCatalog';
@@ -23,6 +24,7 @@ function App() {
       <Navbar />
       <Hero onCTAClick={() => setIsModalOpen(true)} />
       <HeroImageMobile />
+      <HeroBannerCarousel />
       <Logos3 />
       <div id="diferenciais">
         <Differentials onCTAClick={() => setIsModalOpen(true)} />
