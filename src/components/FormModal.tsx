@@ -41,22 +41,22 @@ const FormModal = ({ isOpen, onClose }: FormModalProps) => {
           exit={{ opacity: 0 }}
         >
           <motion.div
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            className="absolute inset-0 bg-gradient-to-br from-black/70 via-[#6c256f]/40 to-black/70 backdrop-blur-md"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
           />
           <motion.div
-            className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative z-10"
-            initial={{ scale: 0.9, opacity: 0, y: 20 }}
+            className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-[0_30px_90px_-15px_rgba(0,0,0,0.6)] relative z-10 border-4 border-white/20"
+            initial={{ scale: 0.85, opacity: 0, y: 40 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
-            exit={{ scale: 0.9, opacity: 0, y: 20 }}
-            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+            exit={{ scale: 0.85, opacity: 0, y: 40 }}
+            transition={{ type: 'spring', damping: 20, stiffness: 250 }}
           >
-            <div className="sticky top-0 bg-gradient-to-r from-[#6c256f] to-[#009bac] px-8 py-6 flex items-center justify-between rounded-t-3xl">
+            <div className="sticky top-0 bg-gradient-to-r from-[#6c256f] via-[#8c4091] to-[#009bac] px-10 py-8 flex items-center justify-between rounded-t-3xl shadow-xl z-20">
               <motion.h3
-                className="text-2xl font-bold text-white"
+                className="text-2xl md:text-3xl font-extrabold text-white drop-shadow-lg"
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.2 }}
@@ -65,18 +65,18 @@ const FormModal = ({ isOpen, onClose }: FormModalProps) => {
               </motion.h3>
               <motion.button
                 onClick={onClose}
-                className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center"
+                className="w-12 h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center backdrop-blur-sm shadow-lg"
                 aria-label="Fechar"
-                whileHover={{ scale: 1.1, backgroundColor: 'rgba(255, 255, 255, 0.3)' }}
+                whileHover={{ scale: 1.15, rotate: 90 }}
                 whileTap={{ scale: 0.9 }}
               >
-                <X className="text-white" size={24} />
+                <X className="text-white" size={26} strokeWidth={2.5} />
               </motion.button>
             </div>
 
-            <form onSubmit={handleSubmit} className="p-8">
+            <form onSubmit={handleSubmit} className="p-10 md:p-12">
               <motion.p
-                className="text-gray-600 mb-8 text-center"
+                className="text-gray-700 mb-10 text-center text-lg font-medium"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3 }}
@@ -84,7 +84,7 @@ const FormModal = ({ isOpen, onClose }: FormModalProps) => {
                 Preencha seus dados e receba nosso catálogo completo com produtos, condições e ofertas exclusivas.
               </motion.p>
 
-              <div className="space-y-6">
+              <div className="space-y-5">
                 {[
                   { icon: User, name: 'name', type: 'text', placeholder: 'Nome completo' },
                   { icon: Phone, name: 'whatsapp', type: 'tel', placeholder: 'WhatsApp (com DDD)' },
@@ -96,12 +96,14 @@ const FormModal = ({ isOpen, onClose }: FormModalProps) => {
                   return (
                     <motion.div
                       key={field.name}
-                      className="relative"
+                      className="group relative"
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.4 + index * 0.05 }}
                     >
-                      <Icon className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+                      <div className="absolute left-5 top-1/2 -translate-y-1/2 w-10 h-10 bg-gradient-to-br from-[#6c256f] to-[#009bac] rounded-xl flex items-center justify-center shadow-lg group-focus-within:scale-110 transition-transform duration-300">
+                        <Icon className="text-white" size={20} />
+                      </div>
                       <input
                         type={field.type}
                         name={field.name}
@@ -109,14 +111,14 @@ const FormModal = ({ isOpen, onClose }: FormModalProps) => {
                         value={formData[field.name as keyof typeof formData] as string}
                         onChange={handleChange}
                         required
-                        className="w-full pl-12 pr-4 py-4 bg-gray-50 border-2 border-gray-200 rounded-xl focus:border-[#009bac] focus:outline-none transition-colors duration-300 text-gray-800"
+                        className="w-full pl-20 pr-6 py-5 bg-gray-50 border-2 border-gray-200 rounded-2xl focus:border-[#009bac] focus:bg-white focus:shadow-xl focus:outline-none transition-all duration-300 text-gray-900 text-lg font-medium"
                       />
                     </motion.div>
                   );
                 })}
 
                 <motion.div
-                  className="flex items-start gap-3 pt-2"
+                  className="flex items-start gap-4 pt-4 pb-2"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.7 }}
@@ -128,9 +130,9 @@ const FormModal = ({ isOpen, onClose }: FormModalProps) => {
                     checked={formData.acceptTerms}
                     onChange={handleChange}
                     required
-                    className="mt-1 w-5 h-5 text-[#009bac] border-gray-300 rounded focus:ring-[#009bac]"
+                    className="mt-1 w-6 h-6 text-[#009bac] border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-[#009bac] cursor-pointer"
                   />
-                  <label htmlFor="modalAcceptTerms" className="text-sm text-gray-600 leading-relaxed">
+                  <label htmlFor="modalAcceptTerms" className="text-sm text-gray-700 leading-relaxed font-medium cursor-pointer">
                     Aceito receber comunicações da Onda Pro via WhatsApp, e-mail e outros canais.
                     Li e concordo com a Política de Privacidade e Termos de Uso.
                   </label>
@@ -138,15 +140,24 @@ const FormModal = ({ isOpen, onClose }: FormModalProps) => {
 
                 <motion.button
                   type="submit"
-                  className="w-full py-5 bg-gradient-to-r from-[#009bac] to-[#4dbdc6] text-white text-lg font-semibold rounded-xl shadow-lg transition-all duration-300 flex items-center justify-center gap-3 shine-effect"
+                  className="group relative w-full py-6 bg-gradient-to-r from-[#6c256f] via-[#8c4091] to-[#6c256f] text-white text-xl font-bold rounded-2xl shadow-2xl overflow-hidden mt-4"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.8 }}
-                  whileHover={{ scale: 1.02, boxShadow: '0 25px 50px -12px rgba(0, 155, 172, 0.5)' }}
+                  whileHover={{ scale: 1.03, boxShadow: '0 30px 60px -15px rgba(108, 37, 111, 0.6)' }}
                   whileTap={{ scale: 0.98 }}
+                  style={{ backgroundSize: '200% 100%' }}
                 >
-                  <Send size={20} />
-                  Receber Catálogo no WhatsApp
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                    initial={{ x: '-100%' }}
+                    whileHover={{ x: '100%' }}
+                    transition={{ duration: 0.6 }}
+                  />
+                  <span className="relative z-10 flex items-center justify-center gap-3">
+                    <Send size={24} />
+                    Receber Catálogo no WhatsApp
+                  </span>
                 </motion.button>
               </div>
             </form>

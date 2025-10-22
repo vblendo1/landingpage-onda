@@ -8,12 +8,12 @@ const Navbar = () => {
   const backgroundColor = useTransform(
     scrollY,
     [0, 100],
-    ['rgba(255, 255, 255, 0.9)', 'rgba(255, 255, 255, 0.95)']
+    ['rgba(255, 255, 255, 0.8)', 'rgba(255, 255, 255, 0.98)']
   );
   const backdropBlur = useTransform(
     scrollY,
     [0, 100],
-    ['blur(8px)', 'blur(12px)']
+    ['blur(16px)', 'blur(20px)']
   );
 
   const scrollToSection = (sectionId: string) => {
@@ -34,7 +34,7 @@ const Navbar = () => {
 
   return (
     <motion.nav
-      className="fixed top-0 left-0 right-0 z-50 shadow-md border-b border-gray-200/50"
+      className="fixed top-0 left-0 right-0 z-50 shadow-lg border-b border-gray-200/60"
       style={{
         backgroundColor,
         backdropFilter: backdropBlur,
@@ -91,31 +91,62 @@ const Navbar = () => {
       </div>
 
       <motion.div
-        className="md:hidden overflow-hidden bg-white/95 backdrop-blur-lg border-t border-gray-200"
+        className="md:hidden fixed inset-0 top-16 bg-gradient-to-br from-white via-[#f6f6f6] to-white backdrop-blur-2xl z-40"
         initial={false}
         animate={{
-          height: isMenuOpen ? 'auto' : 0,
-          opacity: isMenuOpen ? 1 : 0
+          opacity: isMenuOpen ? 1 : 0,
+          pointerEvents: isMenuOpen ? 'auto' : 'none'
         }}
         transition={{ duration: 0.3, ease: 'easeInOut' }}
       >
-        <div className="px-4 py-4 space-y-2">
+        <div className="h-full overflow-y-auto px-6 py-8 space-y-2">
           {navItems.map((item, index) => (
             <motion.button
               key={item.id}
               onClick={() => scrollToSection(item.id)}
-              className="w-full text-left px-4 py-3 text-gray-800 hover:text-[#6c256f] hover:bg-gray-50 rounded-lg font-medium transition-all duration-200"
-              initial={{ opacity: 0, x: -20 }}
+              className="w-full text-left px-6 py-5 text-gray-800 font-semibold text-lg rounded-2xl bg-white/80 backdrop-blur-sm hover:bg-gradient-to-r hover:from-[#6c256f] hover:to-[#009bac] hover:text-white shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200"
+              initial={{ opacity: 0, x: -30, scale: 0.95 }}
               animate={{
                 opacity: isMenuOpen ? 1 : 0,
-                x: isMenuOpen ? 0 : -20
+                x: isMenuOpen ? 0 : -30,
+                scale: isMenuOpen ? 1 : 0.95
               }}
-              transition={{ delay: isMenuOpen ? index * 0.05 : 0 }}
-              whileTap={{ scale: 0.98 }}
+              transition={{ delay: isMenuOpen ? index * 0.08 + 0.1 : 0, type: 'spring', stiffness: 200, damping: 20 }}
+              whileTap={{ scale: 0.96 }}
             >
               {item.label}
             </motion.button>
           ))}
+
+          <motion.div
+            className="pt-6 mt-6 border-t border-gray-300"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{
+              opacity: isMenuOpen ? 1 : 0,
+              y: isMenuOpen ? 0 : 20
+            }}
+            transition={{ delay: isMenuOpen ? navItems.length * 0.08 + 0.2 : 0 }}
+          >
+            <p className="text-center text-sm text-gray-600 mb-4">
+              Mais de 5000 lojas confiam na Onda Pro
+            </p>
+            <div className="flex justify-center gap-2">
+              {[...Array(5)].map((_, i) => (
+                <motion.span
+                  key={i}
+                  className="text-yellow-400 text-xl"
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{
+                    opacity: isMenuOpen ? 1 : 0,
+                    scale: isMenuOpen ? 1 : 0
+                  }}
+                  transition={{ delay: isMenuOpen ? navItems.length * 0.08 + 0.3 + i * 0.05 : 0, type: 'spring' }}
+                >
+                  ★
+                </motion.span>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </motion.div>
     </motion.nav>

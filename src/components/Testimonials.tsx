@@ -62,15 +62,22 @@ const Testimonials = ({ onCTAClick }: TestimonialsProps) => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-[#f6f6f6] to-white">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="depoimentos" className="py-24 bg-gradient-to-br from-white via-[#f6f6f6] to-white relative overflow-hidden">
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-10 right-10 w-96 h-96 bg-gradient-to-br from-[#8c4091]/30 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 left-10 w-96 h-96 bg-gradient-to-br from-[#4dbdc6]/30 to-transparent rounded-full blur-3xl"></div>
+      </div>
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         <AnimatedSection>
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-center mb-8">
             Histórias reais de quem viu o{' '}
-            <span className="bg-gradient-to-r from-[#6c256f] to-[#009bac] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#6c256f] via-[#8c4091] to-[#009bac] bg-clip-text text-transparent">
               estoque girar de verdade
             </span>
           </h2>
+          <p className="text-center text-xl text-gray-600 mb-16 max-w-3xl mx-auto">
+            Lojistas como você já transformaram seus negócios com a Onda Pro
+          </p>
         </AnimatedSection>
 
         <div className="relative">
@@ -102,37 +109,48 @@ const Testimonials = ({ onCTAClick }: TestimonialsProps) => {
                 className="px-4"
               >
                 <motion.div
-                  className={`bg-gradient-to-br ${testimonials[currentIndex].gradient} rounded-3xl p-12 shadow-xl border border-gray-200 shine-effect`}
-                  whileHover={{ scale: 1.02 }}
+                  className="relative bg-white rounded-3xl p-12 md:p-16 shadow-2xl border-2 border-gray-100 overflow-hidden"
+                  whileHover={{ scale: 1.02, boxShadow: '0 30px 60px -15px rgba(0, 0, 0, 0.3)' }}
                 >
+                  <div className={`absolute inset-0 bg-gradient-to-br ${testimonials[currentIndex].gradient} opacity-50`} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/50 to-transparent" />
                   <motion.div
+                    className="relative z-10"
                     initial={{ scale: 0, rotate: -180 }}
                     animate={{ scale: 1, rotate: 0 }}
                     transition={{ delay: 0.2, type: 'spring' }}
                   >
-                    <Quote className="text-[#009bac] mb-6" size={48} />
+                    <div className="w-16 h-16 bg-gradient-to-br from-[#009bac] to-[#4dbdc6] rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                      <Quote className="text-white" size={40} strokeWidth={2.5} />
+                    </div>
                   </motion.div>
-                  <p className="text-2xl md:text-3xl font-medium text-gray-800 mb-8 leading-relaxed">
+                  <p className="relative z-10 text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-10 leading-relaxed">
                     "{testimonials[currentIndex].text}"
                   </p>
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-lg font-semibold text-[#6c256f]">
-                        {testimonials[currentIndex].author}
-                      </p>
-                      <p className="text-gray-600">{testimonials[currentIndex].location}</p>
+                  <div className="relative z-10 flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#6c256f] to-[#8c4091] flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                        {testimonials[currentIndex].author.charAt(0)}
+                      </div>
+                      <div>
+                        <p className="text-lg font-bold text-gray-900">
+                          {testimonials[currentIndex].author}
+                        </p>
+                        <p className="text-gray-600 font-medium">{testimonials[currentIndex].location}</p>
+                      </div>
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex gap-1">
                       {[...Array(5)].map((_, i) => (
-                        <motion.span
+                        <motion.div
                           key={i}
-                          className="text-yellow-400 text-2xl"
-                          initial={{ opacity: 0, scale: 0 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: 0.3 + i * 0.1, type: 'spring' }}
+                          className="w-10 h-10 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-lg flex items-center justify-center shadow-md"
+                          initial={{ opacity: 0, scale: 0, rotate: -180 }}
+                          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                          transition={{ delay: 0.3 + i * 0.08, type: 'spring', stiffness: 200 }}
+                          whileHover={{ scale: 1.15, rotate: [0, -10, 10, 0] }}
                         >
-                          ★
-                        </motion.span>
+                          <span className="text-white text-xl font-bold">★</span>
+                        </motion.div>
                       ))}
                     </div>
                   </div>
@@ -143,25 +161,25 @@ const Testimonials = ({ onCTAClick }: TestimonialsProps) => {
 
           <motion.button
             onClick={prevTestimonial}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white rounded-full p-3 shadow-lg transition-all duration-300 z-10"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-gradient-to-br from-[#6c256f] to-[#8c4091] rounded-full p-4 shadow-2xl z-10"
             aria-label="Anterior"
-            whileHover={{ scale: 1.1, x: -5, boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)' }}
+            whileHover={{ scale: 1.15, x: -8, boxShadow: '0 25px 35px -5px rgba(108, 37, 111, 0.5)' }}
             whileTap={{ scale: 0.9 }}
           >
-            <ChevronLeft className="text-[#6c256f]" size={24} />
+            <ChevronLeft className="text-white" size={28} strokeWidth={3} />
           </motion.button>
 
           <motion.button
             onClick={nextTestimonial}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white rounded-full p-3 shadow-lg transition-all duration-300 z-10"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-gradient-to-br from-[#009bac] to-[#4dbdc6] rounded-full p-4 shadow-2xl z-10"
             aria-label="Próximo"
-            whileHover={{ scale: 1.1, x: 5, boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)' }}
+            whileHover={{ scale: 1.15, x: 8, boxShadow: '0 25px 35px -5px rgba(0, 155, 172, 0.5)' }}
             whileTap={{ scale: 0.9 }}
           >
-            <ChevronRight className="text-[#6c256f]" size={24} />
+            <ChevronRight className="text-white" size={28} strokeWidth={3} />
           </motion.button>
 
-          <div className="flex justify-center gap-2 mt-8">
+          <div className="flex justify-center gap-3 mt-10">
             {testimonials.map((_, index) => (
               <motion.button
                 key={index}
@@ -169,13 +187,13 @@ const Testimonials = ({ onCTAClick }: TestimonialsProps) => {
                   setDirection(index > currentIndex ? 1 : -1);
                   setCurrentIndex(index);
                 }}
-                className={`h-3 rounded-full transition-all duration-300 ${
-                  index === currentIndex ? 'bg-[#009bac] w-8' : 'bg-gray-300 w-3'
+                className={`h-4 rounded-full transition-all duration-300 shadow-lg ${
+                  index === currentIndex ? 'bg-gradient-to-r from-[#6c256f] to-[#009bac] w-12' : 'bg-gray-300 w-4'
                 }`}
                 aria-label={`Ir para depoimento ${index + 1}`}
-                whileHover={{ scale: 1.2 }}
+                whileHover={{ scale: 1.3 }}
                 whileTap={{ scale: 0.9 }}
-                animate={{ width: index === currentIndex ? 32 : 12 }}
+                animate={{ width: index === currentIndex ? 48 : 16 }}
               />
             ))}
           </div>
@@ -185,11 +203,17 @@ const Testimonials = ({ onCTAClick }: TestimonialsProps) => {
           <div className="text-center mt-12">
             <motion.button
               onClick={onCTAClick}
-              className="px-10 py-4 text-lg font-semibold text-[#6c256f] bg-white rounded-full shadow-md transition-all duration-300 border-2 border-[#6c256f] shine-effect"
-              whileHover={{ scale: 1.05, boxShadow: '0 20px 25px -5px rgba(108, 37, 111, 0.3)' }}
+              className="group relative px-12 py-6 text-xl font-bold text-white bg-gradient-to-r from-[#6c256f] via-[#8c4091] to-[#009bac] rounded-full shadow-2xl overflow-hidden"
+              whileHover={{ scale: 1.05, boxShadow: '0 30px 60px -15px rgba(108, 37, 111, 0.6)' }}
               whileTap={{ scale: 0.98 }}
             >
-              Quero ter o mesmo resultado
+              <span className="relative z-10">Quero ter o mesmo resultado</span>
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                initial={{ x: '-100%' }}
+                whileHover={{ x: '100%' }}
+                transition={{ duration: 0.6 }}
+              />
             </motion.button>
           </div>
         </AnimatedSection>

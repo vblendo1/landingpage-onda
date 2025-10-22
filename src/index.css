@@ -22,6 +22,34 @@
   .text-shadow-glow {
     text-shadow: 0 0 20px rgba(108, 37, 111, 0.5);
   }
+
+  .gradient-primary {
+    background: linear-gradient(135deg, #6c256f 0%, #8c4091 50%, #009bac 100%);
+  }
+
+  .gradient-secondary {
+    background: linear-gradient(135deg, #009bac 0%, #4dbdc6 50%, #77c8d2 100%);
+  }
+
+  .glow-purple {
+    box-shadow: 0 0 30px rgba(108, 37, 111, 0.4), 0 0 60px rgba(108, 37, 111, 0.2);
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 30px rgba(0, 155, 172, 0.4), 0 0 60px rgba(0, 155, 172, 0.2);
+  }
+
+  .text-gradient-primary {
+    background: linear-gradient(135deg, #6c256f 0%, #8c4091 50%, #009bac 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .shadow-premium {
+    box-shadow: 0 20px 60px -15px rgba(0, 0, 0, 0.3),
+                0 10px 30px -10px rgba(108, 37, 111, 0.2);
+  }
 }
 
 @keyframes fadeIn {
@@ -76,6 +104,33 @@
   }
 }
 
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(108, 37, 111, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(108, 37, 111, 0.8);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
 .animate-fadeIn {
   animation: fadeIn 0.3s ease-out;
 }
@@ -95,6 +150,18 @@
 .animate-gradient {
   background-size: 200% 200%;
   animation: gradient-shift 8s ease infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 3s linear infinite;
 }
 
 html {
@@ -155,4 +222,34 @@ body {
 
 .shine-effect:hover::before {
   left: 100%;
+}
+
+.gradient-bg-primary {
+  background: linear-gradient(135deg,
+    rgba(108, 37, 111, 0.1) 0%,
+    rgba(0, 155, 172, 0.1) 100%);
+}
+
+.gradient-border {
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, #6c256f, #009bac);
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.shadow-3xl {
+  box-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.3);
+}
+
+.backdrop-blur-strong {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }

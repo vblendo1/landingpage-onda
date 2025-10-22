@@ -25,23 +25,27 @@ const Blog = () => {
   ];
 
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="blog" className="py-24 bg-gradient-to-br from-[#f6f6f6] via-white to-[#f6f6f6] relative overflow-hidden">
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-20 right-20 w-80 h-80 bg-gradient-to-br from-[#009bac]/40 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-to-br from-[#6c256f]/40 to-transparent rounded-full blur-3xl"></div>
+      </div>
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         <AnimatedSection>
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-6">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-center mb-6">
             Dicas que ajudam sua loja a{' '}
-            <span className="bg-gradient-to-r from-[#6c256f] to-[#009bac] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#6c256f] via-[#8c4091] to-[#009bac] bg-clip-text text-transparent">
               vender mais
             </span>
             {' '}(sem gastar mais)
           </h2>
-          <p className="text-center text-gray-600 mb-16 text-lg">
+          <p className="text-center text-gray-700 mb-20 text-xl font-medium max-w-2xl mx-auto">
             Conteúdos exclusivos para lojistas que querem crescer
           </p>
         </AnimatedSection>
 
         <motion.div
-          className="grid md:grid-cols-3 gap-8 mb-12"
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
@@ -62,45 +66,61 @@ const Blog = () => {
                   hidden: { opacity: 0, y: 40 },
                   visible: { opacity: 1, y: 0 }
                 }}
-                whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                className="group bg-gradient-to-br from-gray-50 to-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-200 shine-effect"
+                whileHover={{ y: -12, transition: { duration: 0.3, type: 'spring' } }}
+                className="group relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-3xl transition-all duration-500 border-2 border-gray-100 hover:border-transparent"
               >
                 <motion.div
-                  className="h-48 flex items-center justify-center relative overflow-hidden"
-                  style={{ backgroundColor: `${article.color}15` }}
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
+                  className="h-56 flex items-center justify-center relative overflow-hidden"
+                  style={{
+                    background: `linear-gradient(135deg, ${article.color}15 0%, ${article.color}30 100%)`
+                  }}
+                  whileHover={{ scale: 1.08 }}
+                  transition={{ duration: 0.4 }}
                 >
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent" />
                   <motion.div
-                    whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
-                    transition={{ duration: 0.5 }}
+                    className="relative z-10 w-28 h-28 rounded-2xl flex items-center justify-center shadow-2xl"
+                    style={{
+                      background: `linear-gradient(135deg, ${article.color}40 0%, ${article.color}60 100%)`
+                    }}
+                    whileHover={{ rotate: [0, -12, 12, -12, 0], scale: 1.15 }}
+                    transition={{ duration: 0.6, type: 'spring' }}
                   >
                     <Icon
-                      size={80}
+                      size={64}
                       style={{ color: article.color }}
-                      strokeWidth={1.5}
+                      strokeWidth={2}
                     />
                   </motion.div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                  <motion.div
+                    className="absolute inset-0 bg-white/10"
+                    initial={{ x: '-100%', skewX: -20 }}
+                    whileHover={{ x: '100%' }}
+                    transition={{ duration: 0.8 }}
+                  />
                 </motion.div>
 
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-3 text-gray-800 group-hover:text-[#6c256f] transition-colors duration-300">
+                <div className="p-8">
+                  <h3 className="text-2xl font-bold mb-4 text-gray-900 group-hover:bg-gradient-to-r group-hover:from-[#6c256f] group-hover:to-[#009bac] group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
                     {article.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed mb-4">
+                  <p className="text-gray-700 leading-relaxed mb-6 text-base">
                     {article.excerpt}
                   </p>
-                  <button className="text-[#009bac] font-semibold hover:underline inline-flex items-center gap-2">
+                  <motion.button
+                    className="inline-flex items-center gap-2 text-lg font-bold bg-gradient-to-r from-[#009bac] to-[#4dbdc6] bg-clip-text text-transparent group-hover:gap-4 transition-all duration-300"
+                    whileHover={{ x: 5 }}
+                  >
                     Ler artigo
                     <motion.span
-                      className="inline-block"
+                      className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-r from-[#009bac] to-[#4dbdc6] text-white shadow-lg"
                       animate={{ x: [0, 5, 0] }}
                       transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
                     >
                       →
                     </motion.span>
-                  </button>
+                  </motion.button>
                 </div>
               </motion.div>
             );
@@ -111,11 +131,20 @@ const Blog = () => {
           <div className="text-center">
             <motion.a
               href="/blog"
-              className="inline-block px-10 py-4 text-lg font-semibold text-[#6c256f] bg-white rounded-full shadow-md transition-all duration-300 border-2 border-[#6c256f] shine-effect"
-              whileHover={{ scale: 1.05, boxShadow: '0 20px 25px -5px rgba(108, 37, 111, 0.3)' }}
+              className="group relative inline-flex items-center gap-3 px-12 py-6 text-xl font-bold text-white bg-gradient-to-r from-[#009bac] via-[#4dbdc6] to-[#009bac] rounded-full shadow-2xl overflow-hidden"
+              whileHover={{ scale: 1.05, boxShadow: '0 30px 60px -15px rgba(0, 155, 172, 0.6)' }}
               whileTap={{ scale: 0.98 }}
+              style={{ backgroundSize: '200% 100%' }}
+              animate={{ backgroundPosition: ['0% 0%', '100% 0%', '0% 0%'] }}
+              transition={{ backgroundPosition: { duration: 3, repeat: Infinity, ease: 'linear' } }}
             >
-              Acessar o Blog da Onda Pro
+              <span className="relative z-10">Acessar o Blog da Onda Pro</span>
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                initial={{ x: '-100%' }}
+                whileHover={{ x: '100%' }}
+                transition={{ duration: 0.6 }}
+              />
             </motion.a>
           </div>
         </AnimatedSection>
