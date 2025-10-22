@@ -34,7 +34,7 @@ export const Logos3 = () => {
 
           <div className="relative overflow-hidden">
             <motion.div
-              className="flex gap-8"
+              className="flex gap-12 items-center"
               animate={{
                 x: [0, -100 * logos.length * 0.85],
               }}
@@ -56,12 +56,12 @@ export const Logos3 = () => {
                     y: -5,
                   }}
                   transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                  className="flex items-center justify-center min-w-[180px] h-28"
+                  className="flex items-center justify-center w-24 h-16 md:w-32 md:h-20"
                 >
                   <img
                     src={logo.src}
                     alt={logo.name}
-                    className="w-full h-full object-contain"
+                    className="w-auto h-full max-w-full object-contain"
                   />
                 </motion.div>
               ))}
