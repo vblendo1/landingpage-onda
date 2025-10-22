@@ -6,13 +6,12 @@ interface HeroProps {
   onCTAClick: () => void;
 }
 
-const Hero = ({ onCTAClick }: HeroProps) => {
-  const title = "Importadora de Materiais Escolares e de Escritório"
-  const subtitle = {
+const Hero = ({ onCTAClick }: HeroProps) => 
+  const title = {
     regular: "Venda hoje. Pague depois. ",
     gradient: "Até 60 dias pra lucrar antes de investir",
   }
-  const description = "Produtos com até 200% de margem, frete grátis para todo Brasil e atendimento exclusivo. Transforme seu estoque em lucro com condições que cabem no seu bolso."
+  const subtitle = "Produtos com até 200% de margem, frete grátis para todo Brasil e atendimento exclusivo. Transforme seu estoque em lucro com condições que cabem no seu bolso."
   const ctaText = "Quero meu Catálogo Exclusivo"
 
   return (
