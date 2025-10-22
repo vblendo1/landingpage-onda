@@ -62,7 +62,7 @@ const HeroBannerCarousel = () => {
   }, [emblaApi, onSelect]);
 
   return (
-    <section className="lg:hidden relative w-full pt-20 pb-4 px-4 bg-white">
+    <section className="lg:hidden relative w-full pt-16 pb-2 px-4 bg-white">
       <div className="max-w-3xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -92,7 +92,7 @@ const HeroBannerCarousel = () => {
           </div>
 
           {/* Navigation Dots */}
-          <div className="flex justify-center items-center gap-2 mt-4">
+          <div className="flex justify-center items-center gap-2 mt-3">
             {banners.map((_, index) => (
               <button
                 key={index}

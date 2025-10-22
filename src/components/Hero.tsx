@@ -32,10 +32,10 @@ const Hero = ({ onCTAClick }: HeroProps) => {
       />
       <FloatingParticles />
       <section id="hero" className="relative max-w-full mx-auto z-1">
-        <div className="max-w-screen-xl z-10 mx-auto px-4 md:px-6 lg:px-8 pt-24 pb-16 md:pt-24 md:pb-16 lg:pt-28 lg:pb-0">
+        <div className="max-w-screen-xl z-10 mx-auto px-4 md:px-6 lg:px-8 pt-6 pb-8 md:pt-24 md:pb-16 lg:pt-28 lg:pb-0">
           {/* Mobile Layout - Text Only */}
           <motion.div
-            className="lg:hidden space-y-5 max-w-3xl leading-0 mx-auto text-center"
+            className="lg:hidden space-y-4 max-w-3xl leading-0 mx-auto text-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
@@ -63,7 +63,7 @@ const Hero = ({ onCTAClick }: HeroProps) => {
             </h2>
 
             <motion.div
-              className="flex items-center justify-center gap-x-4 pt-10"
+              className="flex items-center justify-center gap-x-4 pt-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.5 }}
