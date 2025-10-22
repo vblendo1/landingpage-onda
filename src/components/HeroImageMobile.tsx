@@ -24,7 +24,7 @@ const HeroImageMobile = () => {
             className="absolute inset-0 bg-gradient-to-br from-[#6c256f]/10 to-[#009bac]/10 opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none"
           />
           <img
-            src="/Garoto Site - Hero.png"
+            src="/garoto-site-hero.png"
             alt="Criança com produtos ONDA PRO"
             className="w-full h-auto object-contain"
             loading="eager"

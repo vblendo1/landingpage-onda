@@ -174,7 +174,7 @@ const Hero = ({ onCTAClick }: HeroProps) => {
                 transition={{ duration: 0.3 }}
               >
                 <img
-                  src="/Garoto Site - Hero.png"
+                  src="/garoto-site-hero.png"
                   alt="Criança com produtos ONDA PRO"
                   className="w-full h-full object-contain object-center"
                   loading="eager"

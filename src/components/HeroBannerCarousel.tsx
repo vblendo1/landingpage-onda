@@ -7,22 +7,22 @@ const HeroBannerCarousel = () => {
   const banners = [
     {
       id: 1,
-      image: '/smBanner_Ondão2025_ondanotes.png',
+      image: '/sm-banner-ondao2025-ondanotes.png',
       alt: 'OndaNotes - Blocos de Notas Adesivas - Volta às Aulas 2025'
     },
     {
       id: 2,
-      image: '/sm-Banner_Ondão2025.png',
+      image: '/sm-banner-ondao2025.png',
       alt: 'Frete Grátis Todo Brasil - Volta às Aulas 2025'
     },
     {
       id: 3,
-      image: '/sm-Banner_Ondão2025_corretivos.png',
+      image: '/sm-banner-ondao2025-corretivos.png',
       alt: 'Corretivos e Cola em Fita - Volta às Aulas 2025'
     },
     {
       id: 4,
-      image: '/sm-Banner_Ondão2025_canetapop.png',
+      image: '/sm-banner-ondao2025-canetapop.png',
       alt: 'Canetas POP Esferográfica e Espiral - Volta às Aulas 2025'
     }
   ];
