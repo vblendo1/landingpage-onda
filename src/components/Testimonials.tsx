@@ -13,22 +13,46 @@ const Testimonials = ({ onCTAClick }: TestimonialsProps) => {
 
   const testimonials = [
     {
-      text: 'Antes eu comprava tudo no marketplace. Com a Onda Pro, o giro triplicou e pago só depois de vender.',
-      author: 'Papelaria Criativa',
-      location: 'MG',
+      text: 'Trabalhava só com produtos de atacadão, margem apertada e estoque parado. Com a Onda Pro, dobrei a margem de lucro e o prazo de 60 dias me deu fôlego pra crescer sem apertar o caixa.',
+      author: 'Carlos Mendes',
+      business: 'Papelaria Criativa',
+      location: 'Belo Horizonte, MG',
       gradient: 'from-[#6c256f]/10 to-[#8c4091]/10'
     },
     {
-      text: 'Comecei com 1 kit, hoje já trabalho com 4 linhas da marca.',
-      author: 'Arte & Papel',
-      location: 'SP',
+      text: 'No começo fiz um pedido teste de apenas uma linha de produtos. Em três meses já estava trabalhando com o catálogo completo. O giro é rápido e os produtos vendem sozinhos pela qualidade.',
+      author: 'Ana Paula Silva',
+      business: 'Arte & Papel Express',
+      location: 'São Paulo, SP',
       gradient: 'from-[#009bac]/10 to-[#4dbdc6]/10'
     },
     {
-      text: 'Frete grátis e 60 dias no boleto me salvaram no início da temporada.',
-      author: 'Papelaria Esquina',
-      location: 'RS',
+      text: 'O frete grátis fez toda diferença no meu orçamento. Consegui estocar para volta às aulas sem gastar nada com transporte e o prazo de pagamento me permitiu vender antes de pagar o fornecedor.',
+      author: 'Roberto Costa',
+      business: 'Papelaria Esquina',
+      location: 'Porto Alegre, RS',
       gradient: 'from-[#8c4091]/10 to-[#009bac]/10'
+    },
+    {
+      text: 'Sempre tive dificuldade em encontrar produtos diferenciados que realmente giram. A Onda Pro trouxe novidades que meus clientes adoram e com uma margem que compensa investir em estoque.',
+      author: 'Juliana Ferreira',
+      business: 'Mundo da Papelaria',
+      location: 'Curitiba, PR',
+      gradient: 'from-[#6c256f]/10 to-[#009bac]/10'
+    },
+    {
+      text: 'O atendimento exclusivo via WhatsApp me surpreendeu. Qualquer dúvida é resolvida na hora. E poder pagar em 60 dias virou uma vantagem competitiva gigante pro meu negócio.',
+      author: 'Marcos Oliveira',
+      business: 'Central do Escritório',
+      location: 'Brasília, DF',
+      gradient: 'from-[#4dbdc6]/10 to-[#8c4091]/10'
+    },
+    {
+      text: 'Minha loja estava estagnada. Produtos sem diferencial, margem baixa e muito concorrente vendendo o mesmo. A Onda Pro mudou isso. Produtos únicos, margem real e condições que ninguém mais oferece.',
+      author: 'Fernanda Lima',
+      business: 'Papel Premium',
+      location: 'Recife, PE',
+      gradient: 'from-[#009bac]/10 to-[#6c256f]/10'
     }
   ];
 
@@ -80,11 +104,11 @@ const Testimonials = ({ onCTAClick }: TestimonialsProps) => {
 
   return (
     <section id="depoimentos" className="py-24 bg-gradient-to-br from-white via-[#f6f6f6] to-white relative overflow-hidden">
-      <div className="absolute inset-0 opacity-20">
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
         <div className="absolute top-10 right-10 w-96 h-96 bg-gradient-to-br from-[#8c4091]/30 to-transparent rounded-full blur-3xl"></div>
         <div className="absolute bottom-10 left-10 w-96 h-96 bg-gradient-to-br from-[#4dbdc6]/30 to-transparent rounded-full blur-3xl"></div>
       </div>
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative">
         <AnimatedSection>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-center mb-8">
             Histórias reais de quem viu o{' '}
@@ -128,11 +152,10 @@ const Testimonials = ({ onCTAClick }: TestimonialsProps) => {
                 onTouchStart={handleUserInteraction}
               >
                 <motion.div
-                  className="relative bg-white rounded-3xl p-6 sm:p-10 md:p-12 lg:p-16 shadow-2xl border-2 border-gray-100 overflow-hidden"
-                  whileHover={{ scale: 1.02, boxShadow: '0 30px 60px -15px rgba(0, 0, 0, 0.3)' }}
+                  className="relative bg-white rounded-3xl p-6 sm:p-10 md:p-12 shadow-2xl border border-gray-200"
+                  whileHover={{ scale: 1.01, boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)' }}
                 >
-                  <div className={`absolute inset-0 bg-gradient-to-br ${testimonials[currentIndex].gradient} opacity-50`} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-white/50 to-transparent" />
+                  <div className={`absolute inset-0 bg-gradient-to-br ${testimonials[currentIndex].gradient} rounded-3xl`} />
                   <motion.div
                     className="relative z-10"
                     initial={{ scale: 0, rotate: -180 }}
@@ -143,7 +166,7 @@ const Testimonials = ({ onCTAClick }: TestimonialsProps) => {
                       <Quote className="text-white" size={40} strokeWidth={2.5} />
                     </div>
                   </motion.div>
-                  <p className="relative z-10 text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-6 md:mb-10 leading-relaxed">
+                  <p className="relative z-10 text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-gray-900 mb-6 md:mb-10 leading-relaxed">
                     "{testimonials[currentIndex].text}"
                   </p>
                   <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0">
@@ -155,7 +178,8 @@ const Testimonials = ({ onCTAClick }: TestimonialsProps) => {
                         <p className="text-base sm:text-lg font-bold text-gray-900">
                           {testimonials[currentIndex].author}
                         </p>
-                        <p className="text-sm sm:text-base text-gray-600 font-medium">{testimonials[currentIndex].location}</p>
+                        <p className="text-sm sm:text-base text-[#6c256f] font-semibold">{testimonials[currentIndex].business}</p>
+                        <p className="text-xs sm:text-sm text-gray-600 font-medium">{testimonials[currentIndex].location}</p>
                       </div>
                     </div>
                     <div className="flex gap-1 sm:gap-1.5">

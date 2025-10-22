@@ -1,4 +1,3 @@
-import { ChevronRight } from "lucide-react"
 import { motion } from 'framer-motion'
 import FloatingParticles from './ui/FloatingParticles'
 
@@ -15,7 +14,7 @@ const Hero = ({ onCTAClick }: HeroProps) => {
   const ctaText = "Quero meu Catálogo Exclusivo"
 
   return (
-    <div className="relative overflow-hidden bg-gradient-to-br from-white via-[#f6f6f6] to-white">
+    <div className="relative overflow-hidden bg-gradient-to-br from-white via-[#f6f6f6] to-white border-t-0">
       <motion.div
         className="absolute inset-0 z-[0] opacity-30"
         style={{
@@ -64,7 +63,6 @@ const Hero = ({ onCTAClick }: HeroProps) => {
               <span className="bg-gradient-to-r from-[#6c256f] via-[#8c4091] to-[#009bac] bg-clip-text text-transparent">
                 Importadora B2B
               </span>
-              <ChevronRight className="w-4 h-4 text-[#6c256f]" />
             </motion.div>
 
             <h2 className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl tracking-tight font-extrabold mx-auto leading-tight">
@@ -99,7 +97,7 @@ const Hero = ({ onCTAClick }: HeroProps) => {
             </motion.p>
 
             <motion.div
-              className="items-center justify-center gap-x-4 space-y-4 sm:flex sm:space-y-0 pt-8"
+              className="flex items-center justify-center gap-x-4 pt-10"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.5 }}
@@ -163,7 +161,6 @@ const Hero = ({ onCTAClick }: HeroProps) => {
                 <span className="bg-gradient-to-r from-[#6c256f] via-[#8c4091] to-[#009bac] bg-clip-text text-transparent">
                   Importadora B2B
                 </span>
-                <ChevronRight className="w-4 h-4 text-[#6c256f]" />
               </motion.div>
 
               <h2 className="text-3xl xl:text-5xl 2xl:text-6xl tracking-tight font-extrabold leading-tight">

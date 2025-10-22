@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Truck, Calendar, TrendingUp, Users, Sparkles, Shield } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import AnimatedSection from './ui/AnimatedSection';
@@ -56,6 +56,14 @@ const Differentials = ({ onCTAClick }: DifferentialsProps) => {
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + differentials.length) % differentials.length);
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % differentials.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [differentials.length]);
 
   return (
     <section id="diferenciais" className="py-16 md:py-24 bg-white relative overflow-hidden">
@@ -128,11 +136,11 @@ const Differentials = ({ onCTAClick }: DifferentialsProps) => {
                     <Icon size={32} style={{ color: item.color }} strokeWidth={2.5} />
                   </motion.div>
 
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                  <h3 className="text-xl font-extrabold text-gray-900 mb-2 tracking-tight">
                     {item.title}
                   </h3>
 
-                  <p className="text-gray-700 leading-relaxed">
+                  <p className="text-gray-600 leading-relaxed font-medium">
                     {item.description}
                   </p>
                 </div>
@@ -172,11 +180,11 @@ const Differentials = ({ onCTAClick }: DifferentialsProps) => {
                         <Icon size={40} style={{ color: item.color }} strokeWidth={2.5} />
                       </div>
 
-                      <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                      <h3 className="text-2xl font-extrabold text-gray-900 mb-3 tracking-tight">
                         {item.title}
                       </h3>
 
-                      <p className="text-lg text-gray-700 leading-relaxed">
+                      <p className="text-lg text-gray-600 leading-relaxed font-medium">
                         {item.description}
                       </p>
                     </div>

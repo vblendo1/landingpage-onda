@@ -3,14 +3,14 @@ import AnimatedSection from './AnimatedSection';
 
 export const Logos3 = () => {
   const logos = [
-    { name: 'Papelaria Criativa', emoji: '🏪' },
-    { name: 'Arte & Papel', emoji: '🎨' },
-    { name: 'Papel & Cia', emoji: '📝' },
-    { name: 'Mundo da Papelaria', emoji: '🌎' },
-    { name: 'Papelaria Central', emoji: '🏢' },
-    { name: 'Escritório Total', emoji: '💼' },
-    { name: 'Papel Express', emoji: '⚡' },
-    { name: 'Papelaria Premium', emoji: '⭐' },
+    { name: 'ONDA PRO Azul', src: '/AZUL.png' },
+    { name: 'ONDA PRO Roxa', src: '/ROXA.png' },
+    { name: 'ONDA PRO Azul', src: '/AZUL.png' },
+    { name: 'ONDA PRO Roxa', src: '/ROXA.png' },
+    { name: 'ONDA PRO Azul', src: '/AZUL.png' },
+    { name: 'ONDA PRO Roxa', src: '/ROXA.png' },
+    { name: 'ONDA PRO Azul', src: '/AZUL.png' },
+    { name: 'ONDA PRO Roxa', src: '/ROXA.png' },
   ];
 
   const tripleLogos = [...logos, ...logos, ...logos];
@@ -42,7 +42,7 @@ export const Logos3 = () => {
                 x: {
                   repeat: Infinity,
                   repeatType: "loop",
-                  duration: 40,
+                  duration: 20,
                   ease: "linear",
                 },
               }}
@@ -56,18 +56,13 @@ export const Logos3 = () => {
                     y: -5,
                   }}
                   transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                  className="flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-8 min-w-[200px] h-32 border border-gray-200 shadow-sm hover:shadow-lg hover:border-[#009bac]/30 transition-shadow duration-300 shine-effect"
+                  className="flex items-center justify-center min-w-[180px] h-28"
                 >
-                  <div className="text-center">
-                    <motion.div
-                      className="text-4xl mb-2"
-                      whileHover={{ rotate: [0, -10, 10, -10, 0] }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      {logo.emoji}
-                    </motion.div>
-                    <p className="text-sm font-medium text-gray-700">{logo.name}</p>
-                  </div>
+                  <img
+                    src={logo.src}
+                    alt={logo.name}
+                    className="w-full h-full object-contain"
+                  />
                 </motion.div>
               ))}
             </motion.div>
