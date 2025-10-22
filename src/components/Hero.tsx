@@ -8,7 +8,6 @@ import FloatingParticles from './ui/FloatingParticles'
   }
   const subtitle = "Produtos com até 200% de margem, frete grátis para todo Brasil e atendimento exclusivo. Transforme seu estoque em lucro com condições que cabem no seu bolso."
   const ctaText = "Quero meu Catálogo Exclusivo"
-
   return (
     <div className="relative overflow-hidden bg-gradient-to-br from-white via-[#f6f6f6] to-white">
       <motion.div
