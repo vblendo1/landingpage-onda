@@ -237,7 +237,7 @@ const Differentials = ({ onCTAClick }: DifferentialsProps) => {
 
             <motion.button
               onClick={onCTAClick}
-              className="group relative inline-flex items-center gap-3 px-8 md:px-12 py-4 md:py-6 text-lg md:text-xl font-bold text-white bg-gradient-to-r from-[#009bac] via-[#4dbdc6] to-[#009bac] rounded-full shadow-2xl overflow-hidden touch-target"
+              className="group relative inline-flex items-center gap-2 sm:gap-3 px-10 md:px-12 py-4 md:py-6 text-base sm:text-lg md:text-xl font-bold text-white bg-gradient-to-r from-[#009bac] via-[#4dbdc6] to-[#009bac] rounded-full shadow-2xl overflow-hidden min-h-[56px]"
               whileHover={{ scale: 1.05, boxShadow: '0 30px 60px -15px rgba(0, 155, 172, 0.6)' }}
               whileTap={{ scale: 0.98 }}
               style={{ backgroundSize: '200% 100%' }}

@@ -117,7 +117,7 @@ const Blog = ({ onCTAClick }: BlogProps) => {
                   </p>
                   <motion.button
                     onClick={onCTAClick}
-                    className="inline-flex items-center gap-2 text-base md:text-lg font-bold bg-gradient-to-r from-[#009bac] to-[#4dbdc6] bg-clip-text text-transparent group-hover:gap-4 transition-all duration-300 touch-target"
+                    className="inline-flex items-center gap-2 text-sm sm:text-base md:text-lg font-bold bg-gradient-to-r from-[#009bac] to-[#4dbdc6] bg-clip-text text-transparent group-hover:gap-4 transition-all duration-300 min-h-[44px] py-2"
                     whileHover={{ x: 5 }}
                   >
                     Receber conteúdos

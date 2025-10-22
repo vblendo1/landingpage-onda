@@ -147,7 +147,7 @@ const ProductCatalog = ({ onCTAClick }: ProductCatalogProps) => {
           <div className="text-center px-4">
             <motion.button
               onClick={onCTAClick}
-              className="group relative inline-flex items-center gap-3 px-8 md:px-12 py-4 md:py-6 text-lg md:text-xl font-bold text-white bg-gradient-to-r from-[#6c256f] via-[#8c4091] to-[#6c256f] rounded-full shadow-2xl overflow-hidden touch-target"
+              className="group relative inline-flex items-center gap-2 sm:gap-3 px-10 md:px-12 py-4 md:py-6 text-base sm:text-lg md:text-xl font-bold text-white bg-gradient-to-r from-[#6c256f] via-[#8c4091] to-[#6c256f] rounded-full shadow-2xl overflow-hidden min-h-[56px]"
               whileHover={{ scale: 1.05, boxShadow: '0 30px 60px -15px rgba(108, 37, 111, 0.6)' }}
               whileTap={{ scale: 0.98 }}
               style={{ backgroundSize: '200% 100%' }}

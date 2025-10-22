@@ -91,20 +91,21 @@ const Navbar = () => {
       </div>
 
       <motion.div
-        className="md:hidden fixed inset-0 top-16 bg-gradient-to-br from-white via-[#f6f6f6] to-white backdrop-blur-2xl z-40"
+        className="md:hidden fixed inset-0 top-16 bg-gradient-to-br from-white/95 via-[#f6f6f6]/95 to-white/95 backdrop-blur-xl z-40"
         initial={false}
         animate={{
           opacity: isMenuOpen ? 1 : 0,
-          pointerEvents: isMenuOpen ? 'auto' : 'none'
+          pointerEvents: isMenuOpen ? 'auto' : 'none',
+          y: isMenuOpen ? 0 : -20
         }}
         transition={{ duration: 0.3, ease: 'easeInOut' }}
       >
-        <div className="h-full overflow-y-auto px-6 py-8 space-y-2">
+        <div className="h-full overflow-y-auto px-4 py-6 space-y-2">
           {navItems.map((item, index) => (
             <motion.button
               key={item.id}
               onClick={() => scrollToSection(item.id)}
-              className="w-full text-left px-6 py-5 text-gray-800 font-semibold text-lg rounded-2xl bg-white/80 backdrop-blur-sm hover:bg-gradient-to-r hover:from-[#6c256f] hover:to-[#009bac] hover:text-white shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200"
+              className="w-full text-left px-5 py-4 text-gray-800 font-semibold text-base rounded-xl bg-white/90 backdrop-blur-sm hover:bg-gradient-to-r hover:from-[#6c256f] hover:to-[#009bac] hover:text-white shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 active:scale-95"
               initial={{ opacity: 0, x: -30, scale: 0.95 }}
               animate={{
                 opacity: isMenuOpen ? 1 : 0,

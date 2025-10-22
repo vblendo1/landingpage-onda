@@ -137,7 +137,7 @@ const ContactForm = () => {
 
             <button
               type="submit"
-              className="group relative w-full py-6 bg-gradient-to-r from-[#6c256f] via-[#8c4091] to-[#6c256f] text-white text-xl font-bold rounded-2xl shadow-2xl overflow-hidden mt-4"
+              className="group relative w-full py-4 sm:py-5 md:py-6 bg-gradient-to-r from-[#6c256f] via-[#8c4091] to-[#6c256f] text-white text-base sm:text-lg md:text-xl font-bold rounded-2xl shadow-2xl overflow-hidden mt-4 min-h-[56px]"
               style={{ backgroundSize: '200% 100%' }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.backgroundPosition = '100% 0%';
@@ -147,8 +147,8 @@ const ContactForm = () => {
               }}
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-              <span className="relative z-10 flex items-center justify-center gap-3">
-                <Send size={24} />
+              <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-3">
+                <Send size={20} className="sm:w-6 sm:h-6" />
                 Quero falar com um representante
               </span>
             </button>

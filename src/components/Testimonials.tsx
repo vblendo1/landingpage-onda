@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import AnimatedSection from './ui/AnimatedSection';
@@ -9,6 +9,7 @@ interface TestimonialsProps {
 
 const Testimonials = ({ onCTAClick }: TestimonialsProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
   const testimonials = [
     {
@@ -41,6 +42,22 @@ const Testimonials = ({ onCTAClick }: TestimonialsProps) => {
   const prevTestimonial = () => {
     setDirection(-1);
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
+
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+
+    const interval = setInterval(() => {
+      setDirection(1);
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, testimonials.length]);
+
+  const handleUserInteraction = () => {
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 10000);
   };
 
   const slideVariants = {
@@ -98,6 +115,7 @@ const Testimonials = ({ onCTAClick }: TestimonialsProps) => {
                 drag="x"
                 dragConstraints={{ left: 0, right: 0 }}
                 dragElastic={0.2}
+                onDragStart={handleUserInteraction}
                 onDragEnd={(e, { offset, velocity }) => {
                   const swipe = Math.abs(offset.x) * velocity.x;
                   if (swipe < -10000) {
@@ -107,9 +125,10 @@ const Testimonials = ({ onCTAClick }: TestimonialsProps) => {
                   }
                 }}
                 className="px-4"
+                onTouchStart={handleUserInteraction}
               >
                 <motion.div
-                  className="relative bg-white rounded-3xl p-12 md:p-16 shadow-2xl border-2 border-gray-100 overflow-hidden"
+                  className="relative bg-white rounded-3xl p-6 sm:p-10 md:p-12 lg:p-16 shadow-2xl border-2 border-gray-100 overflow-hidden"
                   whileHover={{ scale: 1.02, boxShadow: '0 30px 60px -15px rgba(0, 0, 0, 0.3)' }}
                 >
                   <div className={`absolute inset-0 bg-gradient-to-br ${testimonials[currentIndex].gradient} opacity-50`} />
@@ -124,32 +143,32 @@ const Testimonials = ({ onCTAClick }: TestimonialsProps) => {
                       <Quote className="text-white" size={40} strokeWidth={2.5} />
                     </div>
                   </motion.div>
-                  <p className="relative z-10 text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-10 leading-relaxed">
+                  <p className="relative z-10 text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-6 md:mb-10 leading-relaxed">
                     "{testimonials[currentIndex].text}"
                   </p>
-                  <div className="relative z-10 flex items-center justify-between">
-                    <div className="flex items-center gap-4">
-                      <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#6c256f] to-[#8c4091] flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                  <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0">
+                    <div className="flex items-center gap-3 sm:gap-4">
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br from-[#6c256f] to-[#8c4091] flex items-center justify-center text-white font-bold text-lg sm:text-xl shadow-lg flex-shrink-0">
                         {testimonials[currentIndex].author.charAt(0)}
                       </div>
                       <div>
-                        <p className="text-lg font-bold text-gray-900">
+                        <p className="text-base sm:text-lg font-bold text-gray-900">
                           {testimonials[currentIndex].author}
                         </p>
-                        <p className="text-gray-600 font-medium">{testimonials[currentIndex].location}</p>
+                        <p className="text-sm sm:text-base text-gray-600 font-medium">{testimonials[currentIndex].location}</p>
                       </div>
                     </div>
-                    <div className="flex gap-1">
+                    <div className="flex gap-1 sm:gap-1.5">
                       {[...Array(5)].map((_, i) => (
                         <motion.div
                           key={i}
-                          className="w-10 h-10 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-lg flex items-center justify-center shadow-md"
+                          className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-lg flex items-center justify-center shadow-md"
                           initial={{ opacity: 0, scale: 0, rotate: -180 }}
                           animate={{ opacity: 1, scale: 1, rotate: 0 }}
                           transition={{ delay: 0.3 + i * 0.08, type: 'spring', stiffness: 200 }}
                           whileHover={{ scale: 1.15, rotate: [0, -10, 10, 0] }}
                         >
-                          <span className="text-white text-xl font-bold">★</span>
+                          <span className="text-white text-base sm:text-lg md:text-xl font-bold">★</span>
                         </motion.div>
                       ))}
                     </div>
@@ -160,8 +179,8 @@ const Testimonials = ({ onCTAClick }: TestimonialsProps) => {
           </div>
 
           <motion.button
-            onClick={prevTestimonial}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-gradient-to-br from-[#6c256f] to-[#8c4091] rounded-full p-4 shadow-2xl z-10"
+            onClick={() => { prevTestimonial(); handleUserInteraction(); }}
+            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-gradient-to-br from-[#6c256f] to-[#8c4091] rounded-full p-4 shadow-2xl z-10 items-center justify-center"
             aria-label="Anterior"
             whileHover={{ scale: 1.15, x: -8, boxShadow: '0 25px 35px -5px rgba(108, 37, 111, 0.5)' }}
             whileTap={{ scale: 0.9 }}
@@ -170,8 +189,8 @@ const Testimonials = ({ onCTAClick }: TestimonialsProps) => {
           </motion.button>
 
           <motion.button
-            onClick={nextTestimonial}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-gradient-to-br from-[#009bac] to-[#4dbdc6] rounded-full p-4 shadow-2xl z-10"
+            onClick={() => { nextTestimonial(); handleUserInteraction(); }}
+            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-gradient-to-br from-[#009bac] to-[#4dbdc6] rounded-full p-4 shadow-2xl z-10 items-center justify-center"
             aria-label="Próximo"
             whileHover={{ scale: 1.15, x: 8, boxShadow: '0 25px 35px -5px rgba(0, 155, 172, 0.5)' }}
             whileTap={{ scale: 0.9 }}
@@ -179,21 +198,21 @@ const Testimonials = ({ onCTAClick }: TestimonialsProps) => {
             <ChevronRight className="text-white" size={28} strokeWidth={3} />
           </motion.button>
 
-          <div className="flex justify-center gap-3 mt-10">
+          <div className="flex justify-center gap-2 sm:gap-3 mt-8 md:mt-10">
             {testimonials.map((_, index) => (
               <motion.button
                 key={index}
                 onClick={() => {
                   setDirection(index > currentIndex ? 1 : -1);
                   setCurrentIndex(index);
+                  handleUserInteraction();
                 }}
-                className={`h-4 rounded-full transition-all duration-300 shadow-lg ${
-                  index === currentIndex ? 'bg-gradient-to-r from-[#6c256f] to-[#009bac] w-12' : 'bg-gray-300 w-4'
+                className={`h-3 sm:h-4 rounded-full transition-all duration-300 shadow-lg ${
+                  index === currentIndex ? 'bg-gradient-to-r from-[#6c256f] to-[#009bac] w-10 sm:w-12' : 'bg-gray-300 w-3 sm:w-4'
                 }`}
                 aria-label={`Ir para depoimento ${index + 1}`}
                 whileHover={{ scale: 1.3 }}
                 whileTap={{ scale: 0.9 }}
-                animate={{ width: index === currentIndex ? 48 : 16 }}
               />
             ))}
           </div>
@@ -203,7 +222,7 @@ const Testimonials = ({ onCTAClick }: TestimonialsProps) => {
           <div className="text-center mt-12">
             <motion.button
               onClick={onCTAClick}
-              className="group relative px-12 py-6 text-xl font-bold text-white bg-gradient-to-r from-[#6c256f] via-[#8c4091] to-[#009bac] rounded-full shadow-2xl overflow-hidden"
+              className="group relative px-8 sm:px-10 md:px-12 py-4 sm:py-5 md:py-6 text-base sm:text-lg md:text-xl font-bold text-white bg-gradient-to-r from-[#6c256f] via-[#8c4091] to-[#009bac] rounded-full shadow-2xl overflow-hidden min-h-[56px]"
               whileHover={{ scale: 1.05, boxShadow: '0 30px 60px -15px rgba(108, 37, 111, 0.6)' }}
               whileTap={{ scale: 0.98 }}
             >

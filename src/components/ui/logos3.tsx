@@ -75,11 +75,11 @@ export const Logos3 = () => {
         </div>
 
         <AnimatedSection delay={0.2}>
-          <div className="text-center max-w-3xl mx-auto">
-            <p className="text-xl text-gray-700 mb-2">
+          <div className="text-center max-w-3xl mx-auto px-4">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 mb-2 leading-relaxed">
               De pequenas empresas a redes internacionais
             </p>
-            <p className="text-2xl font-semibold bg-gradient-to-r from-[#6c256f] to-[#009bac] bg-clip-text text-transparent">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold bg-gradient-to-r from-[#6c256f] to-[#009bac] bg-clip-text text-transparent leading-relaxed">
               todos com o mesmo resultado: mais giro, mais margem, menos preocupação
             </p>
           </div>

@@ -105,14 +105,14 @@ const Hero = ({ onCTAClick }: HeroProps) => {
             >
               <motion.button
                 onClick={onCTAClick}
-                className="group relative inline-flex h-14 md:h-16 px-8 md:px-12 items-center justify-center rounded-full cursor-pointer overflow-hidden bg-gradient-to-r from-[#6c256f] via-[#8c4091] to-[#009bac] shadow-2xl shadow-[#6c256f]/50 touch-target"
+                className="group relative inline-flex h-14 md:h-16 px-10 md:px-12 items-center justify-center rounded-full cursor-pointer overflow-hidden bg-gradient-to-r from-[#6c256f] via-[#8c4091] to-[#009bac] shadow-2xl shadow-[#6c256f]/40 min-h-[56px]"
                 whileHover={{ scale: 1.05, boxShadow: '0 30px 60px -15px rgba(108, 37, 111, 0.6)' }}
                 whileTap={{ scale: 0.98 }}
               >
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-r from-[#009bac] via-[#8c4091] to-[#6c256f] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 />
-                <span className="relative z-10 text-base md:text-lg font-bold text-white flex items-center gap-2 md:gap-3">
+                <span className="relative z-10 text-base sm:text-lg font-bold text-white flex items-center gap-2 md:gap-3">
                   {ctaText}
                   <motion.span
                     animate={{ x: [0, 5, 0] }}

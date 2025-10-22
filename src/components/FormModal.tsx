@@ -55,9 +55,9 @@ const FormModal = ({ isOpen, onClose }: FormModalProps) => {
             transition={{ type: 'spring', damping: 20, stiffness: 250 }}
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
-            <div className="sticky top-0 bg-gradient-to-r from-[#6c256f] via-[#8c4091] to-[#009bac] px-10 py-8 flex items-center justify-between rounded-t-3xl shadow-xl z-20">
+            <div className="sticky top-0 bg-gradient-to-r from-[#6c256f] via-[#8c4091] to-[#009bac] px-6 py-5 md:px-10 md:py-8 flex items-center justify-between rounded-t-3xl shadow-xl z-20">
               <motion.h3
-                className="text-2xl md:text-3xl font-extrabold text-white drop-shadow-lg"
+                className="text-lg sm:text-xl md:text-3xl font-extrabold text-white drop-shadow-lg leading-tight"
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.2 }}
@@ -66,24 +66,24 @@ const FormModal = ({ isOpen, onClose }: FormModalProps) => {
               </motion.h3>
               <motion.button
                 onClick={onClose}
-                className="w-12 h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center backdrop-blur-sm shadow-lg"
+                className="w-10 h-10 md:w-12 md:h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center backdrop-blur-sm shadow-lg flex-shrink-0"
                 aria-label="Fechar"
                 whileHover={{ scale: 1.15, rotate: 90 }}
                 whileTap={{ scale: 0.9 }}
               >
-                <X className="text-white" size={26} strokeWidth={2.5} />
+                <X className="text-white" size={22} strokeWidth={2.5} />
               </motion.button>
             </div>
 
-            <div className="max-h-[calc(90vh-100px)] overflow-y-auto" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+            <div className="max-h-[calc(90vh-80px)] md:max-h-[calc(90vh-100px)] overflow-y-auto" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
               <style>{`
                 .max-h-\\[calc\\(90vh-100px\\)\\]::-webkit-scrollbar {
                   display: none;
                 }
               `}</style>
-            <form onSubmit={handleSubmit} className="p-10 md:p-12">
+            <form onSubmit={handleSubmit} className="p-6 sm:p-8 md:p-12">
               <motion.p
-                className="text-gray-700 mb-10 text-center text-lg font-medium"
+                className="text-gray-700 mb-6 md:mb-10 text-center text-sm sm:text-base md:text-lg font-medium"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3 }}
@@ -91,7 +91,7 @@ const FormModal = ({ isOpen, onClose }: FormModalProps) => {
                 Preencha seus dados e receba nosso catálogo completo com produtos, condições e ofertas exclusivas.
               </motion.p>
 
-              <div className="space-y-5">
+              <div className="space-y-3 sm:space-y-4 md:space-y-5">
                 {[
                   { icon: User, name: 'name', type: 'text', placeholder: 'Nome completo' },
                   { icon: Phone, name: 'whatsapp', type: 'tel', placeholder: 'WhatsApp (com DDD)' },
@@ -108,8 +108,8 @@ const FormModal = ({ isOpen, onClose }: FormModalProps) => {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.4 + index * 0.05 }}
                     >
-                      <div className="absolute left-5 top-1/2 -translate-y-1/2 w-10 h-10 bg-gradient-to-br from-[#6c256f] to-[#009bac] rounded-xl flex items-center justify-center shadow-lg group-focus-within:scale-110 transition-transform duration-300">
-                        <Icon className="text-white" size={20} />
+                      <div className="absolute left-4 md:left-5 top-1/2 -translate-y-1/2 w-9 h-9 md:w-10 md:h-10 bg-gradient-to-br from-[#6c256f] to-[#009bac] rounded-xl flex items-center justify-center shadow-lg group-focus-within:scale-110 transition-transform duration-300">
+                        <Icon className="text-white" size={18} />
                       </div>
                       <input
                         type={field.type}
@@ -118,14 +118,14 @@ const FormModal = ({ isOpen, onClose }: FormModalProps) => {
                         value={formData[field.name as keyof typeof formData] as string}
                         onChange={handleChange}
                         required
-                        className="w-full pl-20 pr-6 py-5 bg-gray-50 border-2 border-gray-200 rounded-2xl focus:border-[#009bac] focus:bg-white focus:shadow-xl focus:outline-none transition-all duration-300 text-gray-900 text-lg font-medium"
+                        className="w-full pl-16 md:pl-20 pr-4 md:pr-6 py-3.5 sm:py-4 md:py-5 bg-gray-50 border-2 border-gray-200 rounded-2xl focus:border-[#009bac] focus:bg-white focus:shadow-xl focus:outline-none transition-all duration-300 text-gray-900 text-base md:text-lg font-medium"
                       />
                     </motion.div>
                   );
                 })}
 
                 <motion.div
-                  className="flex items-start gap-4 pt-4 pb-2"
+                  className="flex items-start gap-3 pt-3 pb-1"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.7 }}
@@ -137,9 +137,9 @@ const FormModal = ({ isOpen, onClose }: FormModalProps) => {
                     checked={formData.acceptTerms}
                     onChange={handleChange}
                     required
-                    className="mt-1 w-6 h-6 text-[#009bac] border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-[#009bac] cursor-pointer"
+                    className="mt-0.5 w-5 h-5 md:w-6 md:h-6 text-[#009bac] border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-[#009bac] cursor-pointer flex-shrink-0"
                   />
-                  <label htmlFor="modalAcceptTerms" className="text-sm text-gray-700 leading-relaxed font-medium cursor-pointer">
+                  <label htmlFor="modalAcceptTerms" className="text-xs sm:text-sm text-gray-700 leading-snug md:leading-relaxed font-medium cursor-pointer">
                     Aceito receber comunicações da Onda Pro via WhatsApp, e-mail e outros canais.
                     Li e concordo com a Política de Privacidade e Termos de Uso.
                   </label>
@@ -147,7 +147,7 @@ const FormModal = ({ isOpen, onClose }: FormModalProps) => {
 
                 <motion.button
                   type="submit"
-                  className="group relative w-full py-6 bg-gradient-to-r from-[#6c256f] via-[#8c4091] to-[#6c256f] text-white text-xl font-bold rounded-2xl shadow-2xl overflow-hidden mt-4"
+                  className="group relative w-full py-4 sm:py-5 md:py-6 bg-gradient-to-r from-[#6c256f] via-[#8c4091] to-[#6c256f] text-white text-base sm:text-lg md:text-xl font-bold rounded-2xl shadow-2xl overflow-hidden mt-3 md:mt-4 min-h-[56px]"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.8 }}
@@ -161,8 +161,8 @@ const FormModal = ({ isOpen, onClose }: FormModalProps) => {
                     whileHover={{ x: '100%' }}
                     transition={{ duration: 0.6 }}
                   />
-                  <span className="relative z-10 flex items-center justify-center gap-3">
-                    <Send size={24} />
+                  <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-3">
+                    <Send size={20} className="sm:w-6 sm:h-6" />
                     Receber Catálogo no WhatsApp
                   </span>
                 </motion.button>
