@@ -22,9 +22,9 @@ function App() {
     <div className="min-h-screen bg-[#f6f6f6]">
       <ScrollProgress />
       <Navbar />
-      <HeroBannerCarousel />
-      <Hero onCTAClick={() => setIsModalOpen(true)} />
       <HeroImageMobile />
+      <Hero onCTAClick={() => setIsModalOpen(true)} />
+      <HeroBannerCarousel />
       <Logos3 />
       <div id="diferenciais">
         <Differentials onCTAClick={() => setIsModalOpen(true)} />
