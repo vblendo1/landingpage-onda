@@ -1,7 +1,7 @@
 import { ChevronRight } from "lucide-react"
 import { motion } from 'framer-motion'
-import MagneticButton from './ui/MagneticButton'
 import FloatingParticles from './ui/FloatingParticles'
+import { LiquidButton } from './ui/liquid-glass-button'
 
 interface HeroProps {
   onCTAClick: () => void;
@@ -17,11 +17,11 @@ const Hero = ({ onCTAClick }: HeroProps) => {
   const ctaText = "Quero meu Catálogo Exclusivo"
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden bg-white">
       <motion.div
         className="absolute top-0 z-[0] h-screen w-screen animate-gradient"
         style={{
-          background: 'linear-gradient(120deg, rgba(108, 37, 111, 0.1) 0%, rgba(0, 155, 172, 0.1) 50%, rgba(140, 64, 145, 0.1) 100%)'
+          background: 'linear-gradient(120deg, rgba(108, 37, 111, 0.03) 0%, rgba(0, 155, 172, 0.03) 50%, rgba(140, 64, 145, 0.03) 100%)'
         }}
       />
       <FloatingParticles />
@@ -77,22 +77,12 @@ const Hero = ({ onCTAClick }: HeroProps) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.3 }}
             >
-              <span className="relative inline-block overflow-hidden rounded-full p-[1.5px] shine-effect">
-                <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#9e61a4_0%,#6c256f_50%,#009bac_100%)]" />
-                <div className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-white text-xs font-medium backdrop-blur-3xl">
-                  <MagneticButton
-                    onClick={onCTAClick}
-                    className="inline-flex rounded-full text-center group items-center w-full justify-center bg-gradient-to-tr from-[#9e61a4]/20 via-[#4dbdc6]/30 to-transparent text-gray-900 border-input border-[1px] hover:bg-gradient-to-tr hover:from-[#9e61a4]/30 hover:via-[#4dbdc6]/40 hover:to-transparent transition-all sm:w-auto py-4 px-10"
-                  >
-                    <motion.span
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      {ctaText}
-                    </motion.span>
-                  </MagneticButton>
-                </div>
-              </span>
+              <LiquidButton
+                onClick={onCTAClick}
+                className="text-base font-bold bg-gradient-to-r from-[#6c256f] via-[#8c4091] to-[#009bac] bg-clip-text text-transparent"
+              >
+                {ctaText}
+              </LiquidButton>
             </motion.div>
           </motion.div>
         </div>
