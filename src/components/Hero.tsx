@@ -1,7 +1,6 @@
 import { ChevronRight } from "lucide-react"
 import { motion } from 'framer-motion'
 import FloatingParticles from './ui/FloatingParticles'
-import { LiquidButton } from './ui/liquid-glass-button'
 
 interface HeroProps {
   onCTAClick: () => void;
@@ -72,17 +71,55 @@ const Hero = ({ onCTAClick }: HeroProps) => {
             </motion.p>
 
             <motion.div
-              className="items-center justify-center gap-x-3 space-y-3 sm:flex sm:space-y-0"
+              className="items-center justify-center gap-x-3 space-y-3 sm:flex sm:space-y-0 pt-4"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.3 }}
             >
-              <LiquidButton
+              <button
                 onClick={onCTAClick}
-                className="text-base font-bold bg-gradient-to-r from-[#6c256f] via-[#8c4091] to-[#009bac] bg-clip-text text-transparent"
+                className="relative inline-flex h-14 px-10 items-center justify-center rounded-full cursor-pointer overflow-hidden transition-all duration-300 hover:scale-105"
               >
-                {ctaText}
-              </LiquidButton>
+                <div className="absolute top-0 left-0 z-0 h-full w-full rounded-full
+                  shadow-[0_0_6px_rgba(0,0,0,0.03),0_2px_6px_rgba(0,0,0,0.08),inset_3px_3px_0.5px_-3px_rgba(0,0,0,0.9),inset_-3px_-3px_0.5px_-3px_rgba(0,0,0,0.85),inset_1px_1px_1px_-0.5px_rgba(0,0,0,0.6),inset_-1px_-1px_1px_-0.5px_rgba(0,0,0,0.6),inset_0_0_6px_6px_rgba(0,0,0,0.12),inset_0_0_2px_2px_rgba(0,0,0,0.06),0_0_12px_rgba(255,255,255,0.15)]
+                  transition-all"
+                />
+                <span className="relative z-10 text-base font-bold bg-gradient-to-r from-[#6c256f] via-[#8c4091] to-[#009bac] bg-clip-text text-transparent">
+                  {ctaText}
+                </span>
+
+                <svg className="hidden">
+                  <defs>
+                    <filter
+                      id="container-glass"
+                      x="0%"
+                      y="0%"
+                      width="100%"
+                      height="100%"
+                      colorInterpolationFilters="sRGB"
+                    >
+                      <feTurbulence
+                        type="fractalNoise"
+                        baseFrequency="0.05 0.05"
+                        numOctaves="1"
+                        seed="1"
+                        result="turbulence"
+                      />
+                      <feGaussianBlur in="turbulence" stdDeviation="2" result="blurredNoise" />
+                      <feDisplacementMap
+                        in="SourceGraphic"
+                        in2="blurredNoise"
+                        scale="70"
+                        xChannelSelector="R"
+                        yChannelSelector="B"
+                        result="displaced"
+                      />
+                      <feGaussianBlur in="displaced" stdDeviation="4" result="finalBlur" />
+                      <feComposite in="finalBlur" in2="finalBlur" operator="over" />
+                    </filter>
+                  </defs>
+                </svg>
+              </button>
             </motion.div>
           </motion.div>
         </div>
