@@ -11,12 +11,14 @@ import FAQ from './components/FAQ';
 import About from './components/About';
 import Footer from './components/Footer';
 import FormModal from './components/FormModal';
+import ScrollProgress from './components/ui/ScrollProgress';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-[#f6f6f6]">
+      <ScrollProgress />
       <Navbar />
       <Hero onCTAClick={() => setIsModalOpen(true)} />
       <Logos3 />

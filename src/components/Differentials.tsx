@@ -1,4 +1,7 @@
 import { Truck, Calendar, TrendingUp, Users, Sparkles } from 'lucide-react';
+import { motion } from 'framer-motion';
+import Tilt from 'react-parallax-tilt';
+import AnimatedSection from './ui/AnimatedSection';
 
 interface DifferentialsProps {
   onCTAClick: () => void;
@@ -36,49 +39,92 @@ const Differentials = ({ onCTAClick }: DifferentialsProps) => {
   return (
     <section className="py-20 bg-[#f6f6f6]">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-20">
-          Nossos diferenciais fazem o{' '}
-          <span className="bg-gradient-to-r from-[#6c256f] to-[#009bac] bg-clip-text text-transparent">
-            lucro trabalhar pra você
-          </span>
-        </h2>
+        <AnimatedSection>
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-20">
+            Nossos diferenciais fazem o{' '}
+            <span className="bg-gradient-to-r from-[#6c256f] to-[#009bac] bg-clip-text text-transparent">
+              lucro trabalhar pra você
+            </span>
+          </h2>
+        </AnimatedSection>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <motion.div
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={{
+            visible: {
+              transition: {
+                staggerChildren: 0.15
+              }
+            }
+          }}
+        >
           {differentials.map((item, index) => {
             const Icon = item.icon;
             return (
-              <div
+              <motion.div
                 key={index}
-                className="group bg-white rounded-2xl p-8 shadow-md hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-gray-100"
+                variants={{
+                  hidden: { opacity: 0, y: 30 },
+                  visible: { opacity: 1, y: 0 }
+                }}
               >
-                <div
-                  className="w-16 h-16 rounded-xl mb-6 flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300"
-                  style={{ backgroundColor: `${item.color}15` }}
+                <Tilt
+                  tiltMaxAngleX={5}
+                  tiltMaxAngleY={5}
+                  scale={1.03}
+                  transitionSpeed={2500}
+                  glareEnable={true}
+                  glareMaxOpacity={0.15}
+                  glareColor="#ffffff"
+                  glarePosition="all"
                 >
-                  <Icon size={32} style={{ color: item.color }} strokeWidth={2.5} />
-                </div>
-                <p className="text-lg font-semibold text-gray-800 leading-relaxed">
-                  {item.text}
-                </p>
-              </div>
+                  <div className="group bg-white rounded-2xl p-8 shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100 h-full shine-effect">
+                    <motion.div
+                      className="w-16 h-16 rounded-xl mb-6 flex items-center justify-center"
+                      style={{ backgroundColor: `${item.color}15` }}
+                      whileHover={{
+                        scale: 1.1,
+                        rotate: [0, -5, 5, -5, 0],
+                        transition: { duration: 0.5 }
+                      }}
+                    >
+                      <Icon size={32} style={{ color: item.color }} strokeWidth={2.5} />
+                    </motion.div>
+                    <p className="text-lg font-semibold text-gray-800 leading-relaxed">
+                      {item.text}
+                    </p>
+                  </div>
+                </Tilt>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
 
-        <div className="text-center">
-          <p className="text-xl text-gray-600 mb-8 italic">
-            Sem atravessador, sem enrolação.<br />
-            Só produto com giro rápido, boa apresentação e margem de verdade.
-          </p>
+        <AnimatedSection delay={0.3}>
+          <div className="text-center">
+            <p className="text-xl text-gray-600 mb-8 italic">
+              Sem atravessador, sem enrolação.<br />
+              Só produto com giro rápido, boa apresentação e margem de verdade.
+            </p>
 
-          <button
-            onClick={onCTAClick}
-            className="inline-flex items-center gap-3 px-10 py-4 text-lg font-semibold text-white bg-gradient-to-r from-[#009bac] to-[#4dbdc6] rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-          >
-            <span className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></span>
-            Quero ver os produtos campeões de venda
-          </button>
-        </div>
+            <motion.button
+              onClick={onCTAClick}
+              className="inline-flex items-center gap-3 px-10 py-4 text-lg font-semibold text-white bg-gradient-to-r from-[#009bac] to-[#4dbdc6] rounded-full shadow-lg transition-all duration-300 shine-effect"
+              whileHover={{ scale: 1.05, boxShadow: '0 25px 50px -12px rgba(0, 155, 172, 0.5)' }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <motion.span
+                className="w-3 h-3 bg-green-400 rounded-full"
+                animate={{ scale: [1, 1.2, 1], opacity: [1, 0.7, 1] }}
+                transition={{ repeat: Infinity, duration: 2 }}
+              />
+              Quero ver os produtos campeões de venda
+            </motion.button>
+          </div>
+        </AnimatedSection>
       </div>
     </section>
   );
