@@ -43,7 +43,7 @@ const Testimonials = ({ onCTAClick }: TestimonialsProps) => {
   }, []);
 
   return (
-    <section className="py-24 bg-gradient-to-br from-[#f6f6f6] to-white">
+    <section className="py-20 bg-gradient-to-br from-[#f6f6f6] to-white">
       <div className="max-w-6xl mx-auto px-6">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
           Histórias reais de quem viu o{' '}

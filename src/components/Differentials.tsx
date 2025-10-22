@@ -34,7 +34,7 @@ const Differentials = ({ onCTAClick }: DifferentialsProps) => {
   ];
 
   return (
-    <section className="py-24 bg-[#f6f6f6]">
+    <section className="py-20 bg-[#f6f6f6]">
       <div className="max-w-7xl mx-auto px-6">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-20">
           Nossos diferenciais fazem o{' '}
