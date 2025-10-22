@@ -2,11 +2,6 @@ import { ChevronRight } from "lucide-react"
 import { motion } from 'framer-motion'
 import FloatingParticles from './ui/FloatingParticles'
 
-interface HeroProps {
-  onCTAClick: () => void;
-}
-
-const Hero = ({ onCTAClick }: HeroProps) => 
   const title = {
     regular: "Venda hoje. Pague depois. ",
     gradient: "Até 60 dias pra lucrar antes de investir",
@@ -20,6 +15,7 @@ const Hero = ({ onCTAClick }: HeroProps) =>
         className="absolute inset-0 z-[0] opacity-30"
         style={{
           background: 'radial-gradient(circle at 20% 50%, #ffffff 0%, #ffffff 50%), radial-gradient(circle at 80% 80%, #ffffff 0%, #ffffff 50%)'
+
         }}
         animate={{
           scale: [1, 1.1, 1],
