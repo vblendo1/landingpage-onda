@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import FloatingParticles from './ui/FloatingParticles'
+import AuraBackground from './ui/AuraBackground'
 
 interface HeroProps {
   onCTAClick: () => void;
@@ -14,6 +15,9 @@ const Hero = ({ onCTAClick }: HeroProps) => {
 
   return (
     <div className="relative overflow-hidden bg-gradient-to-br from-white via-[#f6f6f6] to-white border-t-0">
+      {/* Background decorativo com efeito de aura animado - fica atrás de tudo */}
+      <AuraBackground />
+
       <motion.div
         className="absolute inset-0 z-[0] opacity-30"
         style={{
