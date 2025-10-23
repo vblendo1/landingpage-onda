@@ -28,6 +28,42 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
 
   theme: {
+    /**
+     * ═══════════════════════════════════════════════════════════════
+     * BREAKPOINTS CUSTOMIZADOS - RESPONSIVIDADE
+     * ═══════════════════════════════════════════════════════════════
+     *
+     * Breakpoints seguindo especificações Elementor/WordPress
+     * para garantir experiência mobile-first perfeita.
+     *
+     * ORDEM DE PRIORIDADE (mobile-first):
+     * 1. Mobile: até 767px (PRIORIDADE MÁXIMA)
+     * 2. Tablet: 768px - 1024px
+     * 3. Notebook: 1025px - 1366px
+     * 4. Desktop: 1367px - 2399px
+     * 5. Widescreen: 2400px+
+     *
+     * COMO USAR:
+     * - Escreva estilos mobile PRIMEIRO (padrão)
+     * - Use md: para tablet e acima
+     * - Use lg: para desktop e acima
+     * - Use xl: para notebook grande
+     * - Use 2xl: para widescreen
+     *
+     * EXEMPLO:
+     * <div className="text-sm md:text-base lg:text-lg">
+     *   Mobile: 14px, Tablet+: 16px, Desktop+: 18px
+     * </div>
+     */
+    screens: {
+      // Mobile: até 767px (estilo padrão, sem prefixo)
+      'sm': '640px',   // Small devices
+      'md': '768px',   // Tablet portrait (768px+)
+      'lg': '1025px',  // Tablet landscape / Desktop (1025px+)
+      'xl': '1367px',  // Notebook large (1367px+)
+      '2xl': '2400px', // Widescreen (2400px+)
+    },
+
     extend: {
       /**
        * ═══════════════════════════════════════════════════════════════
@@ -241,6 +277,28 @@ export default {
         // Cubic-bezier define 4 pontos que criam a curva da animação
         'bounce-in': 'cubic-bezier(0.68, -0.55, 0.265, 1.55)', // Bounce elástico
         'smooth': 'cubic-bezier(0.4, 0, 0.2, 1)',              // Suave Material Design
+      },
+
+      /**
+       * ═══════════════════════════════════════════════════════════════
+       * SPACING RESPONSIVO - PADDINGS E MARGENS OTIMIZADOS
+       * ═══════════════════════════════════════════════════════════════
+       *
+       * Espaçamentos customizados para diferentes tamanhos de tela.
+       * Seguindo padrão Elementor/WordPress.
+       *
+       * SEÇÕES:
+       * - section-mobile: 60px (mobile)
+       * - section-tablet: 80px (tablet)
+       * - section-desktop: 100px (desktop)
+       *
+       * COMO USAR:
+       * <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop">
+       */
+      spacing: {
+        'section-mobile': '60px',   // Padding vertical seções mobile
+        'section-tablet': '80px',   // Padding vertical seções tablet
+        'section-desktop': '100px', // Padding vertical seções desktop
       },
     },
   },
