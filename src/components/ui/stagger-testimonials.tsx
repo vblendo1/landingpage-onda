@@ -7,39 +7,63 @@ const SQRT_5000 = Math.sqrt(5000);
 const testimonials = [
   {
     tempId: 0,
-    testimonial: "Trabalhava só com produtos de atacadão, margem apertada e estoque parado. Com a Onda Pro, dobrei a margem de lucro e o prazo de 60 dias me deu fôlego pra crescer sem apertar o caixa.",
-    by: "Carlos Mendes, Papelaria Criativa - Belo Horizonte, MG",
-    imgSrc: "https://i.pravatar.cc/150?img=12"
+    testimonial: "Fiz o primeiro pedido meio desconfiada, mas a qualidade dos produtos e o prazo de entrega me surpreenderam. Os marcadores PRISMA saem que nem água. Já fiz reposição duas vezes em menos de um mês.",
+    by: "Papelaria Helena — São Paulo/SP",
+    stars: 5
   },
   {
     tempId: 1,
-    testimonial: "No começo fiz um pedido teste de apenas uma linha de produtos. Em três meses já estava trabalhando com o catálogo completo. O giro é rápido e os produtos vendem sozinhos pela qualidade.",
-    by: "Ana Paula Silva, Arte & Papel Express - São Paulo, SP",
-    imgSrc: "https://i.pravatar.cc/150?img=5"
+    testimonial: "A Onda Pro realmente entende o lojista. Margens boas, frete rápido e atendimento que resolve. Finalmente uma importadora que não some depois da venda.",
+    by: "Livraria e Papelaria Brasil — Goiânia/GO",
+    stars: 5
   },
   {
     tempId: 2,
-    testimonial: "O frete grátis fez toda diferença no meu orçamento. Consegui estocar para volta às aulas sem gastar nada com transporte e o prazo de pagamento me permitiu vender antes de pagar o fornecedor.",
-    by: "Roberto Costa, Papelaria Esquina - Porto Alegre, RS",
-    imgSrc: "https://i.pravatar.cc/150?img=8"
+    testimonial: "Os produtos têm ótima apresentação e chegam bem embalados. Só demorou um dia a mais no transporte, mas o suporte avisou antes. Atendimento nota 10.",
+    by: "Casa do Papel — Belo Horizonte/MG",
+    stars: 4
   },
   {
     tempId: 3,
-    testimonial: "Sempre tive dificuldade em encontrar produtos diferenciados que realmente giram. A Onda Pro trouxe novidades que meus clientes adoram e com uma margem que compensa investir em estoque.",
-    by: "Juliana Ferreira, Mundo da Papelaria - Curitiba, PR",
-    imgSrc: "https://i.pravatar.cc/150?img=9"
+    testimonial: "A linha PRISMA virou sucesso na vitrine. O design chama atenção e o markup é excelente. A equipe comercial da Onda é super ágil.",
+    by: "Kalunga (revenda local)",
+    stars: 5
   },
   {
     tempId: 4,
-    testimonial: "O atendimento exclusivo via WhatsApp me surpreendeu. Qualquer dúvida é resolvida na hora. E poder pagar em 60 dias virou uma vantagem competitiva gigante pro meu negócio.",
-    by: "Marcos Oliveira, Central do Escritório - Brasília, DF",
-    imgSrc: "https://i.pravatar.cc/150?img=13"
+    testimonial: "Os kits metálicos e pastéis são lindos. Vendo muito bem na parte de presentes. A marca passa uma imagem premium mesmo sendo acessível.",
+    by: "Papel Craft — Rio de Janeiro/RJ",
+    stars: 4
   },
   {
     tempId: 5,
-    testimonial: "Minha loja estava estagnada. Produtos sem diferencial, margem baixa e muito concorrente vendendo o mesmo. A Onda Pro mudou isso. Produtos únicos, margem real e condições que ninguém mais oferece.",
-    by: "Fernanda Lima, Papel Premium - Recife, PE",
-    imgSrc: "https://i.pravatar.cc/150?img=10"
+    testimonial: "O diferencial está no mix de produtos. Itens que giram rápido e ainda ajudam a deixar a loja mais bonita. O catálogo digital é muito prático.",
+    by: "Papelex — Campinas/SP",
+    stars: 5
+  },
+  {
+    tempId: 6,
+    testimonial: "Trabalho com eles há 6 meses e nunca tive problema. A reposição é fácil e o suporte responde até fora do horário comercial. Dá gosto fazer pedido.",
+    by: "Prolar — Duque de Caxias/RJ",
+    stars: 5
+  },
+  {
+    tempId: 7,
+    testimonial: "Adorei a condição de 60 dias no boleto. Isso me ajudou muito no fluxo de caixa. Já indiquei pra outras duas lojas parceiras.",
+    by: "Imperial Papelaria — Salto/SP",
+    stars: 4
+  },
+  {
+    tempId: 8,
+    testimonial: "Produtos com ótimo custo-benefício e design que chama atenção. Meus clientes sempre perguntam pelos marcadores PRISMA.",
+    by: "Rede Papelaria — Aparecida de Goiânia/GO",
+    stars: 5
+  },
+  {
+    tempId: 9,
+    testimonial: "Nunca vi uma marca nacional investir tanto em estética e embalagem. Parece importado, mas o preço permite trabalhar com margem alta. Perfeito.",
+    by: "Papelaria Judá — Campinas/SP",
+    stars: 5
   }
 ];
 
@@ -92,27 +116,32 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
           height: 2
         }}
       />
-      <img
-        src={testimonial.imgSrc}
-        alt={`${testimonial.by.split(',')[0]}`}
-        className="mb-4 h-14 w-12 object-cover object-top rounded-md"
-        style={{
-          boxShadow: isCenter
-            ? "3px 3px 0px rgba(255, 255, 255, 0.3)"
-            : "3px 3px 0px rgba(0, 0, 0, 0.1)"
-        }}
-      />
+      <div className="mb-3 flex items-center gap-0.5">
+        {[...Array(5)].map((_, i) => (
+          <span
+            key={i}
+            className={cn(
+              "text-base sm:text-lg",
+              i < testimonial.stars
+                ? isCenter ? "text-yellow-300" : "text-yellow-400"
+                : isCenter ? "text-white/30" : "text-gray-300"
+            )}
+          >
+            ★
+          </span>
+        ))}
+      </div>
       <h3 className={cn(
-        "text-sm sm:text-base md:text-lg font-semibold leading-snug mb-2",
+        "text-sm sm:text-base md:text-lg font-semibold leading-snug mb-4",
         isCenter ? "text-white" : "text-gray-900"
       )}>
         "{testimonial.testimonial}"
       </h3>
       <p className={cn(
-        "absolute bottom-6 sm:bottom-8 left-6 sm:left-8 right-6 sm:right-8 text-xs sm:text-sm italic font-medium",
-        isCenter ? "text-white/90" : "text-gray-600"
+        "absolute bottom-6 sm:bottom-8 left-6 sm:left-8 right-6 sm:right-8 text-xs sm:text-sm font-bold",
+        isCenter ? "text-white/95" : "text-gray-900"
       )}>
-        - {testimonial.by}
+        {testimonial.by}
       </p>
     </div>
   );
@@ -151,15 +180,19 @@ export const StaggerTestimonials: React.FC = () => {
     return () => window.removeEventListener("resize", updateSize);
   }, []);
 
+  useEffect(() => {
+    const autoplayInterval = setInterval(() => {
+      handleMove(1);
+    }, 4000);
+
+    return () => clearInterval(autoplayInterval);
+  }, [testimonialsList]);
+
   return (
     <div
-      className="relative w-full overflow-hidden bg-gradient-to-br from-white via-[#f6f6f6] to-white"
+      className="relative w-full overflow-hidden"
       style={{ height: 600 }}
     >
-      <div className="absolute inset-0 opacity-10 pointer-events-none">
-        <div className="absolute top-10 right-10 w-96 h-96 bg-gradient-to-br from-[#8c4091]/30 to-transparent rounded-full blur-3xl"></div>
-        <div className="absolute bottom-10 left-10 w-96 h-96 bg-gradient-to-br from-[#4dbdc6]/30 to-transparent rounded-full blur-3xl"></div>
-      </div>
 
       {testimonialsList.map((testimonial, index) => {
         const position = testimonialsList.length % 2
